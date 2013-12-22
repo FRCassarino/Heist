@@ -19,7 +19,9 @@ namespace Heist
   
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
+
+        int gitTest = 42;
+
         //Placeholder objects
         Level testLevel = new Level(new Vector2(3000, 3000));
 		public static int WindowHeight = 600;
