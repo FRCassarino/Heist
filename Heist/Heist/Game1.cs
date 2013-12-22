@@ -22,7 +22,7 @@ namespace Heist
         
         //Placeholder objects
         Level testLevel = new Level(new Vector2(3000, 3000));
-		public static int WindowHeight = 600;
+		public static int WindowHeight = 700;
 		public static int WindowWidth = 800;
         
        
