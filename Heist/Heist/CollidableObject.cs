@@ -29,8 +29,8 @@ namespace Heist
             return new RotatedRectangle(new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, 564, 235), 0);
         }
 
-        public CollidableObject(Vector2 pos, Camera camera)
-            : base(pos)
+        public CollidableObject(Vector2 pos, Texture2D texture, Camera camera)
+            : base(pos, texture)
         {
             //Makes sure every collidableObject is added to the list, that is later used to iterate
             //through all the collidableObjects by the collision Manager
@@ -40,12 +40,12 @@ namespace Heist
             this.camera = camera;
         }
 
-        public CollidableObject(Vector2 pos, List<CollidableObject> collidableObjects, Camera camera, Vector2 dimensions)
-            : base(pos,dimensions)
+        public CollidableObject(Vector2 pos, Texture2D texture, Camera camera, Vector2 dimensions)
+            : base(pos, texture, dimensions)
         {
             //Makes sure every collidableObject is added to the list, that is later used to iterate
             //through all the collidableObjects by the collision Manager
-            collidableObjects.Add(this);
+            Level.collidableObjects.Add(this);
 
             //Sets the camera
             this.camera = camera;

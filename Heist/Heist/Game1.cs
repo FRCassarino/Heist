@@ -23,7 +23,7 @@ namespace Heist
         
 
         //Placeholder objects
-        Level testLevel = new Level(new Vector2(3000, 3000));
+        Level testLevel;
 		public static int WindowHeight =600;
 		public static int WindowWidth = 800;
         
@@ -48,8 +48,9 @@ namespace Heist
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
             base.Initialize();
+            testLevel = new Level(new Vector2(3000, 3000));
         }
 
         /// <summary>
@@ -64,7 +65,8 @@ namespace Heist
 
             // TODO: use this.Content to load your game content here
 
-            //Here I load the textures and asign them            
+            //Here I load the textures and asign them   
+            
             testLevel.testTexture = Content.Load<Texture2D>("wall1");
             testLevel.testPlayer.dot = Content.Load<Texture2D>("testcollidable");
             

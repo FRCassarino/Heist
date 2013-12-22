@@ -55,9 +55,9 @@ namespace Heist
             this.levelDimensions = levelDimensions;
 
             testCamera = new Camera();
-            testPlayer = new Player(new Vector2(0,0), collidableObjects, testCamera);
-            testInertObject = new InertObject(new Vector2(600, 600), collidableObjects, testCamera, new Vector2(400,200));
-            testInertObject2 = new InertObject(new Vector2(300, 0), testCamera);
+            testPlayer = new Player(new Vector2(0,0), testTexture, testCamera);
+            testInertObject = new InertObject(new Vector2(600, 600), testTexture, testCamera, new Vector2(400,200));
+            testInertObject2 = new InertObject(new Vector2(300, 0), testTexture, testCamera);
             
 
 
@@ -126,12 +126,12 @@ namespace Heist
                 if (CollidableObject is Player)
                 {
                     
-                    CollidableObject.Draw(spriteBatch, testTexture); 
+                    CollidableObject.Draw(spriteBatch); 
                 }
 
                 if (CollidableObject is InertObject)
                 {
-                    CollidableObject.Draw(spriteBatch, testTexture);
+                    CollidableObject.Draw(spriteBatch);
                 }
                
             }
