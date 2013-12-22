@@ -15,8 +15,8 @@ namespace Heist
 {
     class LivingObject : CollidableObject
     {
-        public LivingObject(Vector2 pos, List<CollidableObject> collidableObjects, Camera camera)
-            : base(pos, collidableObjects, camera)
+        public LivingObject(Vector2 pos, Camera camera)
+            : base(pos, camera)
         {
             //will be used at least to make a list of all the living collidable objects and iterate through them for various purposes
         }

@@ -14,8 +14,8 @@ namespace Heist
 {
     class InertObject : CollidableObject
     {
-        public InertObject(Vector2 pos, List<CollidableObject> collidableObjects, Camera camera)
-            : base(pos, collidableObjects, camera)
+        public InertObject(Vector2 pos, Camera camera)
+            : base(pos, camera)
         {
             
             //walls and stuff that is for the most part inanimate 

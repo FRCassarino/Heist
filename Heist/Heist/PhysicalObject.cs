@@ -48,7 +48,10 @@ namespace Heist
         public virtual void Draw(SpriteBatch spriteBatch, Texture2D texture)
         {
             //Draws itself
-
+            if (dimensions == Vector2.Zero)
+            {
+                dimensions = new Vector2(texture.Width, texture.Height);
+            }
             
 
             Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, camera.cameraPos);

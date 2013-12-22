@@ -57,7 +57,7 @@ namespace Heist
             testCamera = new Camera();
             testPlayer = new Player(new Vector2(0,0), collidableObjects, testCamera);
             testInertObject = new InertObject(new Vector2(600, 600), collidableObjects, testCamera, new Vector2(400,200));
-            testInertObject2 = new InertObject(new Vector2(300, 0), collidableObjects, testCamera);
+            testInertObject2 = new InertObject(new Vector2(300, 0), testCamera);
             
 
 

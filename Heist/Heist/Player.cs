@@ -26,7 +26,7 @@ namespace Heist
 
 
         public Player(Vector2 pos, List<CollidableObject> collidableObjects, Camera camera)
-            : base(pos, collidableObjects, camera)
+            : base(pos, camera)
         {
             
         }
