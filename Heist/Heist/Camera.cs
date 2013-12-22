@@ -19,11 +19,11 @@ namespace Heist
         public Vector2 cameraPos;
         
 
-        public Camera( int cameraWidth, int cameraHeight)
+        public Camera()
         {
             //the constructor takes the dimensions
-            this.cameraHeight = cameraHeight;
-            this.cameraWidth = cameraWidth;
+            this.cameraHeight = Game1.WindowHeight;
+			this.cameraWidth = Game1.WindowWidth;
             
         }
 

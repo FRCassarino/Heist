@@ -22,7 +22,8 @@ namespace Heist
         
         //Placeholder objects
         Level testLevel = new Level(new Vector2(3000, 3000));
-        
+		public static int WindowHeight = 600;
+		public static int WindowWidth = 800;
         
        
         
@@ -30,8 +31,8 @@ namespace Heist
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 800;
-            graphics.PreferredBackBufferWidth = 1500;
+            graphics.PreferredBackBufferHeight = WindowHeight;
+            graphics.PreferredBackBufferWidth = WindowWidth;
             Content.RootDirectory = "Content";
            
         }
