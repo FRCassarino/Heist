@@ -1,2 +1,0 @@
-C:\Users\Fede\Documents\Visual Studio 2010\Projects\Heist\Heist\HeistContent\obj\x86\Debug\HeistContent.contentprojResolveAssemblyReference.cache
-C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\HeistContent\obj\x86\Debug\HeistContent.contentprojResolveAssemblyReference.cache
