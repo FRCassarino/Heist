@@ -1,0 +1,4 @@
+Content\textures\testcollidable.xnb
+Content\textures\Wall.xnb
+Content\textures\wall1.xnb
+Content\textures\wall1ds.xnb
