@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
+using System.Text.RegularExpressions;
 
 
 namespace Heist
@@ -48,11 +50,25 @@ namespace Heist
         
         
         
-        
-        public Level(Vector2 levelDimensions)
-        
-        {   //will be probably expanded, right now only takes basic leveldimensions
-            this.levelDimensions = levelDimensions;
+        public Level(string name)
+        {
+			string filestr = File.ReadAllText(name);
+			string[] lines = filestr.Split('\n');
+
+			// level 1 3000 4000
+			Match match = Regex.Match(lines[0], @"^level ([a-zA-Z0-9]+) (\d+) (\d+)$");
+			if (!match.Success) throw new System.Exception(".level file must start with /^level name w h$/");
+			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[1].Value), Convert.ToInt32(match.Groups[2].Value));
+
+			foreach (string l in lines.Take(1)) {
+				string[] ws = l.Split(' ');
+				switch (ws[0]) {
+					case "InertObject": // InertObject x y w h img
+						new InertObject(new Vector2(Convert.ToInt32(ws[1]),Convert.ToInt32(ws[2])), new Texture2D());
+						break;
+				}
+			}
+            
 
             testCamera = new Camera();
             testPlayer = new Player(new Vector2(0,0), collidableObjects, testCamera);

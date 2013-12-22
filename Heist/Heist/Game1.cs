@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
 
 namespace Heist
 {
@@ -19,25 +20,19 @@ namespace Heist
   
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        int gitTest = 42;
-
-        //Placeholder objects
-        Level testLevel = new Level(new Vector2(3000, 3000));
-
-		public static int WindowHeight =500;
+		public static Dictionary<string, Texture2D> textures = new Dictionary<string,Texture2D>();
+		public static int WindowHeight = 600;
+		public static ContentManager contentManager;
 		public static int WindowWidth = 800;
         
        
-        
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = WindowHeight;
             graphics.PreferredBackBufferWidth = WindowWidth;
             Content.RootDirectory = "Content";
-           
+			contentManager = Content;
         }
 
         /// <summary>
@@ -49,6 +44,8 @@ namespace Heist
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+			//Level testLevel = new Level(new Vector2(3000, 3000));
+			Level testLevel = new Level("testLevel"); // Objetivo, lodear el level desde el archivo de texto Levels/testLevel.level
 
             base.Initialize();
         }
@@ -61,13 +58,15 @@ namespace Heist
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-                      
 
             // TODO: use this.Content to load your game content here
-
-            //Here I load the textures and asign them            
-            testLevel.testTexture = Content.Load<Texture2D>("wall1");
-            testLevel.testPlayer.dot = Content.Load<Texture2D>("testcollidable");
+			//Directory.GetFiles(Directory.GetCurrentDirectory())
+			//string[] lines = l.Split('\n');
+			//textures.Add("test", Content.Load<Texture2D>("wall1"));
+			//textures.Add("test2", "val2");
+			////Here I load the textures and asign them
+			//TtestLevel.testTexture = 
+			//testLevel.testPlayer.dot = Content.Load<Texture2D>("testcollidable");
             
 
         }
