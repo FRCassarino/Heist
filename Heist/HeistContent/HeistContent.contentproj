@@ -42,15 +42,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="wall1.png">
+    <Content Include="levels\0.txt">
+      <Name>0</Name>
+    </Content>
+    <Content Include="levels\1.txt">
+      <Name>1</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\testcollidable.png">
+      <Name>testcollidable</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\Wall.png">
+      <Name>Wall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\wall1.png">
       <Name>wall1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="testcollidable.png">
-      <Name>testcollidable</Name>
+    <Compile Include="textures\wall1ds.png">
+      <Name>wall1ds</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

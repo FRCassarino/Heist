@@ -52,28 +52,30 @@ namespace Heist
         
         public Level(string name)
         {
-			string filestr = File.ReadAllText(name);
+			string filestr = File.ReadAllText("../../../../HeistContent/levels/" + name + ".txt");
+			// string filestr = Game1.contentManager.Load<string>("levels/" + name + ".txt");
 			string[] lines = filestr.Split('\n');
 
 			// level 1 3000 4000
-			Match match = Regex.Match(lines[0], @"^level ([a-zA-Z0-9]+) (\d+) (\d+)$");
-			if (!match.Success) throw new System.Exception(".level file must start with /^level name w h$/");
+			Match match = Regex.Match(lines[0], @"^level ([a-zA-Z0-9]+) (\d+) (\d+)");
+			if (!match.Success) throw new System.Exception("level file must start with /^level name w h$/");
 			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[1].Value), Convert.ToInt32(match.Groups[2].Value));
 
 			foreach (string l in lines.Take(1)) {
 				string[] ws = l.Split(' ');
 				switch (ws[0]) {
-					case "InertObject": // InertObject x y w h img
-						new InertObject(new Vector2(Convert.ToInt32(ws[1]),Convert.ToInt32(ws[2])), new Texture2D());
+					case "InertObject": // InertObject img x y w h
+						Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+						new InertObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], testCamera);
 						break;
 				}
 			}
             
 
             testCamera = new Camera();
-            testPlayer = new Player(new Vector2(0,0), collidableObjects, testCamera);
-            testInertObject = new InertObject(new Vector2(600, 600), collidableObjects, testCamera, new Vector2(400,200));
-            testInertObject2 = new InertObject(new Vector2(300, 0), collidableObjects, testCamera);
+            testPlayer = new Player(new Vector2(0,0), testTexture, testCamera);
+            testInertObject = new InertObject(new Vector2(600, 600), testTexture, testCamera, new Vector2(400,200));
+            testInertObject2 = new InertObject(new Vector2(300, 0), testTexture, testCamera);
             
 
 
@@ -142,12 +144,12 @@ namespace Heist
                 if (CollidableObject is Player)
                 {
                     
-                    CollidableObject.Draw(spriteBatch, testTexture); 
+                    CollidableObject.Draw(spriteBatch); 
                 }
 
                 if (CollidableObject is InertObject)
                 {
-                    CollidableObject.Draw(spriteBatch, testTexture);
+                    CollidableObject.Draw(spriteBatch);
                 }
                
             }

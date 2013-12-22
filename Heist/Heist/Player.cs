@@ -25,8 +25,8 @@ namespace Heist
         
 
 
-        public Player(Vector2 pos, List<CollidableObject> collidableObjects, Camera camera)
-            : base(pos, collidableObjects, camera)
+        public Player(Vector2 pos, Texture2D texture, Camera camera)
+            : base(pos, texture, camera)
         {
             
         }
@@ -38,7 +38,7 @@ namespace Heist
 
         }
 
-        override public void Draw(SpriteBatch spriteBatch, Texture2D texture)
+        override public void Draw(SpriteBatch spriteBatch)
         {
             
             //Draws the Player pos for testing purposes

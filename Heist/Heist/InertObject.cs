@@ -14,15 +14,15 @@ namespace Heist
 {
     class InertObject : CollidableObject
     {
-        public InertObject(Vector2 pos, List<CollidableObject> collidableObjects, Camera camera)
-            : base(pos, collidableObjects, camera)
+        public InertObject(Vector2 pos, Texture2D texture, Camera camera)
+            : base(pos, texture, camera)
         {
             
             //walls and stuff that is for the most part inanimate 
         }
 
-        public InertObject(Vector2 pos, List<CollidableObject> collidableObjects, Camera camera, Vector2 dimensions)
-            : base(pos, collidableObjects, camera, dimensions)
+        public InertObject(Vector2 pos, Texture2D texture, Camera camera, Vector2 dimensions)
+            : base(pos, texture, camera, dimensions)
         {
             this.dimensions = dimensions;
             //walls and stuff that is for the most part inanimate 

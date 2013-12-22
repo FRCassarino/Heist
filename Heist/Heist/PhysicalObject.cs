@@ -21,23 +21,24 @@ namespace Heist
         public float angle;
         internal Camera camera;
         public Vector2 dimensions;
+        public Texture2D texture;
         
         
         
 
-        public PhysicalObject(Vector2 pos)
+        public PhysicalObject(Vector2 pos, Texture2D texture)
         {
             //all take a pos when created
             this.pos = pos;
-            
+            this.texture = texture;
         }
 
-        public PhysicalObject(Vector2 pos, Vector2 dimensions)
+        public PhysicalObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
         {
             //all take a pos when created
             this.pos = pos;
             this.dimensions = dimensions;
-
+            this.texture = texture; 
         }
 
         public virtual void Update()
@@ -45,10 +46,13 @@ namespace Heist
             
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, Texture2D texture)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             //Draws itself
-
+            if (dimensions == Vector2.Zero)
+            {
+                dimensions = new Vector2(texture.Width, texture.Height);
+            }
             
 
             Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, camera.cameraPos);

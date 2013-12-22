@@ -22,8 +22,9 @@ namespace Heist
         SpriteBatch spriteBatch;
 		public static Dictionary<string, Texture2D> textures = new Dictionary<string,Texture2D>();
 		public static int WindowHeight = 600;
-		public static ContentManager contentManager;
 		public static int WindowWidth = 800;
+		public static ContentManager contentManager;
+		public Level currentLevel;
         
        
         public Game1()
@@ -43,10 +44,7 @@ namespace Heist
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-			//Level testLevel = new Level(new Vector2(3000, 3000));
-			Level testLevel = new Level("testLevel"); // Objetivo, lodear el level desde el archivo de texto Levels/testLevel.level
-
+			currentLevel = new Level("0");
             base.Initialize();
         }
 
@@ -60,15 +58,6 @@ namespace Heist
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-			//Directory.GetFiles(Directory.GetCurrentDirectory())
-			//string[] lines = l.Split('\n');
-			//textures.Add("test", Content.Load<Texture2D>("wall1"));
-			//textures.Add("test2", "val2");
-			////Here I load the textures and asign them
-			//TtestLevel.testTexture = 
-			//testLevel.testPlayer.dot = Content.Load<Texture2D>("testcollidable");
-            
-
         }
 
         /// <summary>
@@ -92,7 +81,7 @@ namespace Heist
                 this.Exit();
            
             //Update the currentLevel, it then iterates through all of the objects within it and updates them among other things
-            testLevel.UpdateLevel();
+            currentLevel.UpdateLevel();
             //CO testLevel.testPlayer.Update();
           
             
@@ -116,7 +105,7 @@ namespace Heist
             //testLevel.testPlayer.Draw(spriteBatch, testTexture);
 
             //Here we draw the current level. The level iterates through every object and draws it, taking the camera into account
-            testLevel.DrawLevel(spriteBatch);
+            currentLevel.DrawLevel(spriteBatch);
             
             
             spriteBatch.End();
