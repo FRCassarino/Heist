@@ -42,8 +42,6 @@ namespace Heist
         public static Texture2D dot = Game1.contentManager.Load<Texture2D>("textures/testcollidable");
         public static Texture2D testTexture = Game1.contentManager.Load<Texture2D>("textures/wall1");
         
-        
-        
         public Level(string name)
         {
 			currentCamera = new Camera(Vector2.Zero);
@@ -117,13 +115,13 @@ namespace Heist
         public void UpdateLevel(GameTime time)
         {
 
-			
+			player.Update(time);
 
             //placeholder right now, right now only updates player but it'll iterate through every PhysicalObject within it, and do lots of more stuff
-            foreach (CollidableObject CollidableObject in collidableObjects)
-            {
-                CollidableObject.Update(time);
-            }
+			//foreach (CollidableObject CollidableObject in collidableObjects)
+			//{
+			//    CollidableObject.Update(time);
+			//}
 
             if (player.pos.X > levelDimensions.X)
             {
@@ -160,10 +158,10 @@ namespace Heist
         {
            
             //Placeholder draw for the level outer walls.  
-            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
-            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, (int)levelDimensions.Y), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
-            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2((int)levelDimensions.X, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
-            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
+            //Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
+            //Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, (int)levelDimensions.Y), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
+            //Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2((int)levelDimensions.X, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
+            //Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
 
             //iterates through every collidableObject as a placeholder, it will iterate through every PhysicalObject, draws them. Checks what they are as to pass the
             //right texture

@@ -42,12 +42,11 @@ namespace Heist
 
 		public virtual void Update(GameTime time)
         {
-
+			
         }
 
         public virtual void Draw()
-        {
-			
+        {			
 			sprite.Draw(pos, angle);
         }
        

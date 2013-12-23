@@ -39,6 +39,8 @@ namespace Heist
             graphics.PreferredBackBufferWidth = WindowWidth;
             Content.RootDirectory = "Content";
 			contentManager = Content;
+			
+			TargetElapsedTime = TimeSpan.FromSeconds(1 / 60.0);
         }
 
         /// <summary>
@@ -89,8 +91,6 @@ namespace Heist
             //Update the currentLevel, it then iterates through all of the objects within it and updates them among other things
             currentLevel.UpdateLevel(gameTime);
             //CO testLevel.testPlayer.Update();
-          
-            
 
             // TODO: Add your update logic here
 

@@ -17,7 +17,7 @@ namespace Heist
         public const float FW_VELOCITY = 10;
 		public float runBoost = 1.0f;
 		public new Animation sprite;
-		public int[] walkingFrames = { 0, 1 };
+		public int[] walkingFrames = { 1, 0, 2, 3};
 		public int[] runningFrames = { 2, 3 };
         
         //This are pos and angles that guarantee a collision will not be present
@@ -30,7 +30,7 @@ namespace Heist
             : base(pos, texture, dimensions)
         {
 			dimensions = this.dimensions;
-			this.sprite = new Animation(texture, new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), walkingFrames, 300, angle); 
+			this.sprite = new Animation(texture, new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), walkingFrames, 700, angle); 
         }
 
         public override void Update(GameTime time) 
