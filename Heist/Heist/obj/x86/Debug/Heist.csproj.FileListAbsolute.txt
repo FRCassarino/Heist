@@ -9,10 +9,8 @@ C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Hei
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\obj\x86\Debug\Heist.exe
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\obj\x86\Debug\Heist.pdb
-C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\wall1.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Heist.exe
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Heist.pdb
-C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\testcollidable.xnb
 C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\Heist.exe
 C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\Heist.pdb
 C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\obj\x86\Debug\Heist.csprojResolveAssemblyReference.cache
@@ -23,3 +21,7 @@ C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Deb
 C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Wall.xnb
 C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1.xnb
 C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1ds.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\testcollidable.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Wall.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1ds.xnb

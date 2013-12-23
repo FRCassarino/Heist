@@ -17,7 +17,7 @@ namespace Heist
         public const float FW_VELOCITY = 10; 
         
         //placeholder textures
-        public Texture2D dot;
+        
         
         //This are pos and angles that guarantee a collision will not be present
         Vector2 validPos;
@@ -42,14 +42,14 @@ namespace Heist
         {
             
             //Draws the Player pos for testing purposes
-            spriteBatch.Draw(dot, pos, Color.White);
+            //spriteBatch.Draw(dot, pos, Color.White);
 
            
             // Vertices colission box for testing purposes
-            spriteBatch.Draw(dot, GetCollisionRotatedRectangle().LowerLeftCorner(), Color.White);
-            spriteBatch.Draw(dot, GetCollisionRotatedRectangle().UpperLeftCorner(), Color.White);
-            spriteBatch.Draw(dot, GetCollisionRotatedRectangle().LowerRightCorner(), Color.White);
-            spriteBatch.Draw(dot, GetCollisionRotatedRectangle().UpperRightCorner(), Color.White);
+            spriteBatch.Draw(Level.dot, GetCollisionRotatedRectangle().LowerLeftCorner(), Color.White);
+            spriteBatch.Draw(Level.dot, GetCollisionRotatedRectangle().UpperLeftCorner(), Color.White);
+            spriteBatch.Draw(Level.dot, GetCollisionRotatedRectangle().LowerRightCorner(), Color.White);
+            spriteBatch.Draw(Level.dot, GetCollisionRotatedRectangle().UpperRightCorner(), Color.White);
 
 
             Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, camera.cameraPos);

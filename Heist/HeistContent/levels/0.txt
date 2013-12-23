@@ -1,2 +1,1 @@
 level 0 3000 4000
-InertObject textures/Wall 110 95
