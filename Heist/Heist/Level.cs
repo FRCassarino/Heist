@@ -24,7 +24,7 @@ namespace Heist
         //placeholder player, camera and inert object to test stuff
         
         
-        public Camera testCamera;         
+        public static Camera testCamera;         
         public Player testPlayer;  
         public InertObject testInertObject;
 
@@ -60,23 +60,27 @@ namespace Heist
 			// level 1 3000 4000
 			Match match = Regex.Match(lines[0], @"^level ([a-zA-Z0-9]+) (\d+) (\d+)");
 			if (!match.Success) throw new System.Exception("level file must start with /^level name w h$/");
-			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[1].Value), Convert.ToInt32(match.Groups[2].Value));
+			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[2].Value), Convert.ToInt32(match.Groups[3].Value));
 
-			foreach (string l in lines.Take(1)) {
+			foreach (string l in lines.Take(2)) {
 				string[] ws = l.Split(' ');
 				switch (ws[0]) {
 					case "InertObject": // InertObject img x y w h
 						Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
-						new InertObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], testCamera);
+						new InertObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
 						break;
+                    //case "Player": // InertObject img x y w h
+                      //  Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+                        //new Player(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], testCamera);
+                        //break;
 				}
 			}
             
 
             testCamera = new Camera();
-            testPlayer = new Player(new Vector2(0,0), testTexture, testCamera);
-            testInertObject = new InertObject(new Vector2(600, 600), testTexture, testCamera, new Vector2(400,200));
-            testInertObject2 = new InertObject(new Vector2(300, 0), testTexture, testCamera);
+            testPlayer = new Player(new Vector2(0,0), testTexture);
+            testInertObject = new InertObject(new Vector2(600, 600), testTexture, new Vector2(400,200));
+            testInertObject2 = new InertObject(new Vector2(300, 0), testTexture);
             
 
 
