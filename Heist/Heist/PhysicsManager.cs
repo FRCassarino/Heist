@@ -42,19 +42,7 @@ namespace Heist
                 }
             }
 
-            /*
-             CO 
-              foreach (CollidableObject collidableObject in collidableObjects)
-            {
-                foreach (CollidableObject collidableObject2 in collidableObjects)
-                {
-                    if (PhysicsManager.CheckCollision(collidableObject, collidableObject2))
-                    {
-                        collidableObject.IfCollisionDetected();
-                        collidableObject2.IfCollisionDetected();
-                    }
-                }
-            }*/
+           
         }
 
         internal static bool CheckCollision(CollidableObject collidableObject, CollidableObject collidableObject2)

@@ -32,25 +32,22 @@ namespace Heist
             //all take a pos when created
             this.pos = pos;
             this.texture = texture;
-			Vector2 dims = dimensions;
+			this.dimensions = dimensions;
 			if (dimensions == Vector2.Zero) {
-				dims = new Vector2(texture.Width, texture.Height);
+				this.dimensions = new Vector2(texture.Width, texture.Height);
 			}
-			this.sprite = new Animation(texture, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y), new Rectangle(0, 0, (int)dims.X, (int)dims.Y), new[] { 0 }, 0, 0);
-			this.dimensions = dims;
+			this.sprite = new Animation(texture, new Rectangle((int)pos.X, (int)pos.Y, (int)this.dimensions.X, (int)this.dimensions.Y), new Rectangle(0, 0, (int)this.dimensions.X, (int)this.dimensions.Y), new[] { 0 }, 0, 0);
+			this.dimensions = dimensions; //???
         }
 
 		public virtual void Update(GameTime time)
         {
-			sprite.destination.X = (int)pos.X;
-			sprite.destination.Y = (int)pos.Y;
-			sprite.angle = angle;
+
         }
 
         public virtual void Draw()
         {
-			Vector2 pc = Level.currentCamera.posInCamera(pos);
-			//Game1.sb.Draw(Level.dot, new Rectangle((int)pc.X -1 , (int)pc.Y - 1, (int)dimensions.X + 2, (int)dimensions.Y + 2), Color.White);
+			
 			sprite.Draw(pos, angle);
         }
        

@@ -63,7 +63,7 @@ namespace Heist {
 		{
 			Vector2 offset = new Vector2(source.Width / 2, source.Height / 2);
 			Vector2 pc = Level.currentCamera.posInCamera(position) + offset;
-			Game1.sb.Draw(texture, new Rectangle((int)pc.X, (int)pc.Y, destination.Width, destination.Height), source, Color.White, angle, offset, SpriteEffects.None, 0);
+			Game1.spriteBatchStatic.Draw(texture, new Rectangle((int)pc.X, (int)pc.Y, destination.Width, destination.Height), source, Color.White, angle, offset, SpriteEffects.None, 0);
 		}
 	}
 }

@@ -29,7 +29,7 @@ namespace Heist
 
         //Declares the currentLevel
 		public Level currentLevel;
-		public static SpriteBatch sb;
+		public static SpriteBatch spriteBatchStatic;
         
        
         public Game1()
@@ -61,7 +61,7 @@ namespace Heist
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            sb = spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatchStatic = spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }

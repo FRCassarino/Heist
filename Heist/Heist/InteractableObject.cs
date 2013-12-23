@@ -34,7 +34,14 @@ namespace Heist
         
         public void PlayerInteracts()
         {
-            
+            if (sprite.texture == Game1.textures["textures/ClosedDoor"])
+            {
+            sprite.texture = Game1.textures["textures/Wall"];
+            }
+            else 
+            {
+            sprite.texture =  Game1.textures["textures/ClosedDoor"];
+            }
         }
 
     }   

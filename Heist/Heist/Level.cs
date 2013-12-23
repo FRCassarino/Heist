@@ -79,21 +79,21 @@ namespace Heist
                         {
                             Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
                         }
-                        new InertObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], Vector2.Zero);
+                        new InertObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], new Vector2(Convert.ToInt32(ws[4]), Convert.ToInt32(ws[5])));
 						break;
                     case "CollidableObject": // InertObject img x y w h
                         if (!Game1.textures.ContainsKey(ws[1]))
                         {
                             Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
-                        }                                             
-						new CollidableObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], Vector2.Zero);
+                        }
+                        new CollidableObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], new Vector2(Convert.ToInt32(ws[4]), Convert.ToInt32(ws[5])));
 						break;
                     case "LivingObject": // InertObject img x y w h
                         if (!Game1.textures.ContainsKey(ws[1]))
                         {
                             Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
                         }
-                        new LivingObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], Vector2.Zero);
+                        new LivingObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], new Vector2(Convert.ToInt32(ws[4]), Convert.ToInt32(ws[5])));
                         break;
                     case "PhysicalObject": // InertObject img x y w h
                         if (!Game1.textures.ContainsKey(ws[1]))
@@ -107,7 +107,7 @@ namespace Heist
                         {
                             Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
                         }
-                        new InteractableObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], Vector2.Zero);
+                        new InteractableObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], new Vector2(Convert.ToInt32(ws[4]), Convert.ToInt32(ws[5])));
                         break;
 				}
 			}
@@ -124,26 +124,26 @@ namespace Heist
             {
                 CollidableObject.Update(time);
             }
-            
-			//if (player.pos.X > levelDimensions.X)
-			//{
-			//    player.SetValidPos();
-			//}
 
-			//if (player.pos.Y > levelDimensions.Y)
-			//{
-			//    player.SetValidPos();
-			//}
+            if (player.pos.X > levelDimensions.X)
+            {
+                player.SetValidPos();
+            }
 
-			//if (player.pos.X < 0)
-			//{
-			//    player.SetValidPos();
-			//}
+            if (player.pos.Y > levelDimensions.Y)
+            {
+                player.SetValidPos();
+            }
 
-			//if (player.pos.Y < 0)
-			//{
-			//    player.SetValidPos();
-			//}
+            if (player.pos.X < 0)
+            {
+                player.SetValidPos();
+            }
+
+            if (player.pos.Y < 0)
+            {
+                player.SetValidPos();
+            }
 
 
 
@@ -160,10 +160,10 @@ namespace Heist
         {
            
             //Placeholder draw for the level outer walls.  
-            //Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
-			//Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, (int)levelDimensions.Y), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
-			//Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2((int)levelDimensions.X, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
-			//Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
+            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
+            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, (int)levelDimensions.Y), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
+            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2((int)levelDimensions.X, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
+            Game1.spriteBatchStatic.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
 
             //iterates through every collidableObject as a placeholder, it will iterate through every PhysicalObject, draws them. Checks what they are as to pass the
             //right texture
