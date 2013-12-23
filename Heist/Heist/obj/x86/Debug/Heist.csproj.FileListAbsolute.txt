@@ -25,3 +25,12 @@ C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Hei
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Wall.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1ds.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Civilian.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\ClosedDoor.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Cop.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Floor.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\FuseBox.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\OpenDoor.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Player.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Scaffold.xnb
+C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Worker.xnb

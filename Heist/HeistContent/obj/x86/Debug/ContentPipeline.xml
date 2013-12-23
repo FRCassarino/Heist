@@ -37,6 +37,87 @@
       <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1ds.xnb</Output>
       <Time>2013-12-22T21:59:17.3744276-02:00</Time>
     </Item>
+    <Item>
+      <Source>textures\Civilian.png</Source>
+      <Name>textures\Civilian</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Civilian.xnb</Output>
+      <Time>2013-12-22T20:17:33.1060379-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\ClosedDoor.png</Source>
+      <Name>textures\ClosedDoor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\ClosedDoor.xnb</Output>
+      <Time>2013-12-22T20:22:08.6237967-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\Cop.png</Source>
+      <Name>textures\Cop</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Cop.xnb</Output>
+      <Time>2013-12-22T20:17:15.7580457-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\Floor.png</Source>
+      <Name>textures\Floor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Floor.xnb</Output>
+      <Time>2013-12-22T20:07:52.6909441-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\FuseBox.png</Source>
+      <Name>textures\FuseBox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\FuseBox.xnb</Output>
+      <Time>2013-12-22T20:20:26.4439523-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\OpenDoor.png</Source>
+      <Name>textures\OpenDoor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\OpenDoor.xnb</Output>
+      <Time>2013-12-22T20:24:14.2009793-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\Player.png</Source>
+      <Name>textures\Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Player.xnb</Output>
+      <Time>2013-12-22T20:17:05.9714859-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\Scaffold.png</Source>
+      <Name>textures\Scaffold</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Scaffold.xnb</Output>
+      <Time>2013-12-22T20:19:10.2925967-02:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\Worker.png</Source>
+      <Name>textures\Worker</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Worker.xnb</Output>
+      <Time>2013-12-22T20:17:57.6874439-02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -61,24 +61,54 @@ namespace Heist
 			Match match = Regex.Match(lines[0], @"^level ([a-zA-Z0-9]+) (\d+) (\d+)");
 			if (!match.Success) throw new System.Exception("level file must start with /^level name w h$/");
 			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[2].Value), Convert.ToInt32(match.Groups[3].Value));
-
-			foreach (string l in lines.Take(2)) {
+            string[] rest = lines.Skip(1).ToArray();
+			foreach (string l in rest) {
 				string[] ws = l.Split(' ');
 				switch (ws[0]) {
-					case "InertObject": // InertObject img x y w h
-						Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
-						new InertObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
+
+                    case "Player": // InertObject img x y w h
+                        if (!Game1.textures.ContainsKey(ws[1]))
+                        {
+                            Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+                        }
+                        testPlayer = new Player(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
+                        break;
+                    case "InertObject": // InertObject img x y w h
+                        if (!Game1.textures.ContainsKey(ws[1]))
+                        {
+                            Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+                        }
+                        new InertObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
 						break;
-                    //case "Player": // InertObject img x y w h
-                      //  Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
-                        //new Player(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], testCamera);
-                        //break;
+                    case "CollidableObject": // InertObject img x y w h
+                        if (!Game1.textures.ContainsKey(ws[1]))
+                        {
+                            Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+                        }                                             
+						new CollidableObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
+						break;
+                    case "LivingObject": // InertObject img x y w h
+                        if (!Game1.textures.ContainsKey(ws[1]))
+                        {
+                            Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+                        }
+                        new LivingObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
+                        break;
+                    case "PhysicalObject": // InertObject img x y w h
+                        if (!Game1.textures.ContainsKey(ws[1]))
+                        {
+                            Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+                        }
+                        new LivingObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
+                        break;
+                    
+                    
 				}
 			}
             
 
             testCamera = new Camera();
-            testPlayer = new Player(new Vector2(0,0), testTexture);
+            //testPlayer = new Player(new Vector2(0,0), testTexture);
             testInertObject = new InertObject(new Vector2(600, 600), testTexture, new Vector2(400,200));
             testInertObject2 = new InertObject(new Vector2(300, 0), testTexture);
             
@@ -98,7 +128,10 @@ namespace Heist
         public void UpdateLevel()
         {
             //placeholder right now, right now only updates player but it'll iterate through every PhysicalObject within it, and do lots of more stuff
-            testPlayer.Update();
+            foreach (CollidableObject CollidableObject in collidableObjects)
+            {
+                CollidableObject.Update();
+            }
             
             
             if (testPlayer.pos.X > levelDimensions.X)
