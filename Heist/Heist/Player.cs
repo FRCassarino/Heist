@@ -16,7 +16,7 @@ namespace Heist
         //The basic forward speed
         public const float FW_VELOCITY = 10;
 		public float runBoost = 1.0f;
-		public Animation sprite;
+		public new Animation sprite;
 		public int[] walkingFrames = { 0, 1 };
 		public int[] runningFrames = { 2, 3 };
         
@@ -26,18 +26,19 @@ namespace Heist
         
 
 
-        public Player(Vector2 pos, Texture2D texture)
-            : base(pos, texture)
+        public Player(Vector2 pos, Texture2D texture, Vector2 dimensions)
+            : base(pos, texture, dimensions)
         {
-			this.sprite = new Animation(texture,ref pos, new Rectangle(0, 0, texture.Width / 2, texture.Height / 2), walkingFrames, 300, angle); 
+			dimensions = this.dimensions;
+			this.sprite = new Animation(texture, new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), walkingFrames, 300, angle); 
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time) 
         {
+			base.Update(time);
 			Level.currentCamera.position = pos;
-			sprite.Update(time);
             Move();
-
+			sprite.Update(time);
             foreach (InteractableObject InteractableObject in Level.interactableObjects)
             {
                 RotatedRectangle asdf = GetCollisionRotatedRectangle();
@@ -65,7 +66,6 @@ namespace Heist
             
             //Draws the Player pos for testing purposes
             //spriteBatch.Draw(dot, pos, Color.White);
-
            
             // Vertices colission box for testing purposes
 			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerLeftCorner()), Color.White);
@@ -73,7 +73,6 @@ namespace Heist
 			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerRightCorner()), Color.White);
 			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperRightCorner()), Color.White);
 			sprite.Draw();
-
         }
 
         public override RotatedRectangle GetCollisionRotatedRectangle()

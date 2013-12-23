@@ -19,13 +19,13 @@ namespace Heist {
 		public float interval;
 		public float angle;
 		public Texture2D texture;
-		public Vector2 position;
 		public Rectangle source;
 		float timer = 0;
 		public int[] frames; // List of frames to loop, change it according to your needs. eg. player {walk-left: [ 0 1 0 2 ], walk-right: [0 3 0 4]}
+		public Rectangle destination;
 
 
-		public Animation(Texture2D texture, ref Vector2 pos, Rectangle source, int[] frames, float interval, float angle) {
+		public Animation(Texture2D texture, Rectangle destination, Rectangle source, int[] frames, float interval, float angle) {
 			if (texture.Height % source.Height != 0 || texture.Width % source.Width != 0)
 				throw new Exception("Source rect must fit exactly an integer number of times in the texture.");
 			this.texture = texture;
@@ -34,7 +34,7 @@ namespace Heist {
 			this.totalFrames = horFrameNum * verFrameNum;
 			this.frames = frames;
 			this.interval = interval;
-			this.position = pos;
+			this.destination = destination;
 			this.source = source;
 			this.angle = angle;
 		}
@@ -61,9 +61,10 @@ namespace Heist {
 
 		public void Draw()
 		{
-			Vector2 posc = Level.currentCamera.posInCamera(position);
-			Rectangle dest = new Rectangle((int)posc.X, (int)posc.Y, source.Width, source.Height);
-			Game1.sb.Draw(texture, dest, source, Color.White, angle, Level.currentCamera.topPos(), SpriteEffects.None, 0);
+			Rectangle posc = Level.currentCamera.posInCamera(destination);
+			Vector2 offset = 0.5f * new Vector2(source.Width / 2, source.Height / 2);
+			Rectangle dest = new Rectangle(posc.X + (int)offset.X, posc.Y + (int)offset.X, destination.Width, destination.Height);
+			Game1.sb.Draw(texture, dest, source, Color.White, angle, offset, SpriteEffects.None, 0);
 		}
 	}
 }

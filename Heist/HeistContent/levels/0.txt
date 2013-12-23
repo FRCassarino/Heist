@@ -1,6 +1,4 @@
 level 0 3000 4000
 Player textures/Player 0 0 300 300
 InertObject textures/Wall 0 400 300 300
-InertObject textures/wall1 1300 800 300 300
 InertObject textures/wall1 300 0 300 300
-InteractableObject textures/wall1 500 500 300 300

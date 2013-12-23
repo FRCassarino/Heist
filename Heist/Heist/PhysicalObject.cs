@@ -20,34 +20,31 @@ namespace Heist
         public Vector2 pos;
         public float angle;
         
-        //public Vector2 dimensions;
+        public Vector2 dimensions;
         public Texture2D texture;
 		public Animation sprite;
         
         
         
 
-        public PhysicalObject(Vector2 pos, Texture2D texture)
-        {
-            //all take a pos when created
-            this.pos = pos;
-            this.texture = texture;
-			this.sprite = new Animation(texture,ref pos, new Rectangle(0, 0, texture.Width, texture.Height), new[] { 0 }, 0, 0);
-        }
-
         public PhysicalObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
         {
             //all take a pos when created
             this.pos = pos;
-            //this.dimensions = dimensions;
             this.texture = texture;
-			this.sprite = new Animation(texture,ref pos, new Rectangle(0, 0, texture.Width, texture.Height), new[] { 0 }, 0, 0);
-			// this.sprite = new Animation(texture, pos, new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), new[] { 0 }, 0, 0);
+			Vector2 dims = dimensions;
+			if (dimensions == Vector2.Zero) {
+				dims = new Vector2(texture.Width, texture.Height);
+			}
+			this.sprite = new Animation(texture, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y), new Rectangle(0, 0, (int)dims.X, (int)dims.Y), new[] { 0 }, 0, 0);
+			this.dimensions = dims;
         }
 
-        public virtual void Update()
+		public virtual void Update(GameTime time)
         {
-            
+			sprite.destination.X = (int)pos.X;
+			sprite.destination.Y = (int)pos.Y;
+			sprite.angle = angle;
         }
 
         public virtual void Draw()
