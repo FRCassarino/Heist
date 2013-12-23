@@ -1,0 +1,11 @@
+# Common files to ignore
+*.swp
+*.zip
+*.suo
+*.user
+Heist/Heist/bin
+Heist/HeistContent/bin
+Heist/Heist/obj
+Heist/HeistContent/obj
+*.cachefile
+*.ccgame

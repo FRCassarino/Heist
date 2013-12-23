@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Content\textures\testcollidable.xnb
 Content\textures\Wall.xnb
 Content\textures\wall1.xnb
@@ -11,3 +12,9 @@ Content\textures\OpenDoor.xnb
 Content\textures\Player.xnb
 Content\textures\Scaffold.xnb
 Content\textures\Worker.xnb
+=======
+testcollidable.xnb
+Wall.xnb
+wall1.xnb
+wall1ds.xnb
+>>>>>>> 3930215f581c2a867ca1f35c46bab82bc2001e78

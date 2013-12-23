@@ -25,6 +25,7 @@ C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Hei
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Wall.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1ds.xnb
+<<<<<<< HEAD
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Civilian.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\ClosedDoor.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Cop.xnb
@@ -34,3 +35,9 @@ C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Hei
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Player.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Scaffold.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Worker.xnb
+=======
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\testcollidable.xnb
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\Wall.xnb
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\wall1.xnb
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\wall1ds.xnb
+>>>>>>> 3930215f581c2a867ca1f35c46bab82bc2001e78
