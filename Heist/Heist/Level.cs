@@ -24,8 +24,8 @@ namespace Heist
         //placeholder player, camera and inert object to test stuff
         
         
-        public static Camera testCamera;         
-        public Player testPlayer;  
+        public static Camera currentCamera;         
+        public Player player;  
         public InertObject testInertObject;
 
 
@@ -71,7 +71,7 @@ namespace Heist
                         {
                             Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
                         }
-                        testPlayer = new Player(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
+                        player = new Player(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
                         break;
                     case "InertObject": // InertObject img x y w h
                         if (!Game1.textures.ContainsKey(ws[1]))
@@ -107,7 +107,7 @@ namespace Heist
 			}
             
 
-            testCamera = new Camera();
+            currentCamera = new Camera(player.pos);
             //testPlayer = new Player(new Vector2(0,0), testTexture);
             testInertObject = new InertObject(new Vector2(600, 600), testTexture, new Vector2(400,200));
             testInertObject2 = new InertObject(new Vector2(300, 0), testTexture);
@@ -125,8 +125,11 @@ namespace Heist
             
         }
 
-        public void UpdateLevel()
+        public void UpdateLevel(GameTime time)
         {
+
+			player.Update(time);
+
             //placeholder right now, right now only updates player but it'll iterate through every PhysicalObject within it, and do lots of more stuff
             foreach (CollidableObject CollidableObject in collidableObjects)
             {
@@ -134,24 +137,24 @@ namespace Heist
             }
             
             
-            if (testPlayer.pos.X > levelDimensions.X)
+            if (player.pos.X > levelDimensions.X)
             {
-                testPlayer.SetValidPos();
+                player.SetValidPos();
             }
 
-            if (testPlayer.pos.Y > levelDimensions.Y)
+            if (player.pos.Y > levelDimensions.Y)
             {
-                testPlayer.SetValidPos();
+                player.SetValidPos();
             }
 
-            if (testPlayer.pos.X < 0)
+            if (player.pos.X < 0)
             {
-                testPlayer.SetValidPos();
+                player.SetValidPos();
             }
 
-            if (testPlayer.pos.Y < 0)
+            if (player.pos.Y < 0)
             {
-                testPlayer.SetValidPos();
+                player.SetValidPos();
             }
 
 
@@ -159,21 +162,21 @@ namespace Heist
 
             PhysicsManager.IterateCollisionList(collidableObjects);
             
-            Vector2 centeredPlayerPos = new Vector2(testPlayer.pos.X -testCamera.cameraWidth /2, testPlayer.pos.Y - testCamera.cameraHeight/2 );
-            testCamera.cameraPos = centeredPlayerPos;
+            // Vector2 centeredPlayerPos = new Vector2(player.pos.X -currentCamera.cameraWidth /2, player.pos.Y - currentCamera.cameraHeight/2 );
+            currentCamera.position = player.pos;
 
 
             
         }
 
-        public void DrawLevel(SpriteBatch spriteBatch)
+        public void DrawLevel()
         {
            
             //Placeholder draw for the level outer walls.  
-            spriteBatch.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).Y), (int)levelDimensions.X, 10), Color.White);
-            spriteBatch.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, (int)levelDimensions.Y), testCamera.cameraPos).Y), (int)levelDimensions.X, 10), Color.White);
-            spriteBatch.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2((int)levelDimensions.X, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).Y), 10, (int)levelDimensions.Y), Color.White);
-            spriteBatch.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).Y), 10, (int)levelDimensions.Y), Color.White);
+            Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
+			Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, (int)levelDimensions.Y), currentCamera.position).Y), (int)levelDimensions.X, 10), Color.White);
+			Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2((int)levelDimensions.X, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
+			Game1.sb.Draw(dot, new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), currentCamera.position).Y), 10, (int)levelDimensions.Y), Color.White);
 
             //iterates through every collidableObject as a placeholder, it will iterate through every PhysicalObject, draws them. Checks what they are as to pass the
             //right texture
@@ -182,12 +185,12 @@ namespace Heist
                 if (CollidableObject is Player)
                 {
                     
-                    CollidableObject.Draw(spriteBatch); 
+                    CollidableObject.Draw(); 
                 }
 
                 if (CollidableObject is InertObject)
                 {
-                    CollidableObject.Draw(spriteBatch);
+                    CollidableObject.Draw();
                 }
                
             }

@@ -20,8 +20,9 @@ namespace Heist
         public Vector2 pos;
         public float angle;
         
-        public Vector2 dimensions;
+        //public Vector2 dimensions;
         public Texture2D texture;
+		public Animation sprite;
         
         
         
@@ -31,14 +32,17 @@ namespace Heist
             //all take a pos when created
             this.pos = pos;
             this.texture = texture;
+			this.sprite = new Animation(texture,ref pos, new Rectangle(0, 0, texture.Width, texture.Height), new[] { 0 }, 0, 0);
         }
 
         public PhysicalObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
         {
             //all take a pos when created
             this.pos = pos;
-            this.dimensions = dimensions;
-            this.texture = texture; 
+            //this.dimensions = dimensions;
+            this.texture = texture;
+			this.sprite = new Animation(texture,ref pos, new Rectangle(0, 0, texture.Width, texture.Height), new[] { 0 }, 0, 0);
+			// this.sprite = new Animation(texture, pos, new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), new[] { 0 }, 0, 0);
         }
 
         public virtual void Update()
@@ -46,17 +50,18 @@ namespace Heist
             
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw()
         {
             //Draws itself
-            if (dimensions == Vector2.Zero)
-            {
-                dimensions = new Vector2(texture.Width, texture.Height);
-            }
+			//if (dimensions == Vector2.Zero)
+			//{
+			//    dimensions = new Vector2(texture.Width, texture.Height);
+			//}
+			sprite.Draw();
 
-
-            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.testCamera.cameraPos);
-            spriteBatch.Draw(texture, new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, texture.Width, texture.Height), new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), Color.White);
+            //Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.currentCamera.position);
+			//Rectangle source = new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y);
+			//Game1.sb.Draw(texture, Level.currentCamera.posInCamera(pos), source, Color.White, 0.0f, Level.currentCamera.posInCamera(Vector2.Zero), SpriteEffects.None, 0);
 
         }
        

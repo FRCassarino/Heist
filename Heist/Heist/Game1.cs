@@ -25,6 +25,7 @@ namespace Heist
 		public static int WindowWidth = 800;
 		public static ContentManager contentManager;
 		public Level currentLevel;
+		public static SpriteBatch sb;
         
        
         public Game1()
@@ -55,7 +56,7 @@ namespace Heist
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            sb = spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -81,7 +82,7 @@ namespace Heist
                 this.Exit();
            
             //Update the currentLevel, it then iterates through all of the objects within it and updates them among other things
-            currentLevel.UpdateLevel();
+            currentLevel.UpdateLevel(gameTime);
             //CO testLevel.testPlayer.Update();
           
             
@@ -105,7 +106,7 @@ namespace Heist
             //testLevel.testPlayer.Draw(spriteBatch, testTexture);
 
             //Here we draw the current level. The level iterates through every object and draws it, taking the camera into account
-            currentLevel.DrawLevel(spriteBatch);
+            currentLevel.DrawLevel();
             
             
             spriteBatch.End();

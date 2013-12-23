@@ -24,7 +24,7 @@ namespace Heist
         public InertObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
             : base(pos, texture, dimensions)
         {
-            this.dimensions = dimensions;
+            //this.dimensions = dimensions;
             //walls and stuff that is for the most part inanimate 
         }
     }
