@@ -25,3 +25,7 @@ C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Hei
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\Wall.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1.xnb
 C:\Users\Fede\Documents\Visual Studio 2012\Visual Studio 2010\Projects\Heist\Heist\Heist\bin\x86\Debug\Content\textures\wall1ds.xnb
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\testcollidable.xnb
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\Wall.xnb
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\wall1.xnb
+C:\Users\Sebastian\Documents\Santiago\Programacion\Heist\Heist\Heist\bin\x86\Debug\wall1ds.xnb

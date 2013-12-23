@@ -60,7 +60,7 @@ namespace Heist
 			// level 1 3000 4000
 			Match match = Regex.Match(lines[0], @"^level ([a-zA-Z0-9]+) (\d+) (\d+)");
 			if (!match.Success) throw new System.Exception("level file must start with /^level name w h$/");
-			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[1].Value), Convert.ToInt32(match.Groups[2].Value));
+			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[2].Value), Convert.ToInt32(match.Groups[3].Value));
 
 			foreach (string l in lines.Take(1)) {
 				string[] ws = l.Split(' ');
