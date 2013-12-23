@@ -20,9 +20,6 @@ namespace Heist
 		public int[] walkingFrames = { 0, 1 };
 		public int[] runningFrames = { 2, 3 };
         
-        //placeholder textures
-        
-        
         //This are pos and angles that guarantee a collision will not be present
         Vector2 validPos;
         float validAngle;
@@ -41,6 +38,26 @@ namespace Heist
 			sprite.Update(time);
             Move();
 
+            foreach (InteractableObject InteractableObject in Level.interactableObjects)
+            {
+                RotatedRectangle asdf = GetCollisionRotatedRectangle();
+                if (InteractableObject.upperInteractionArea.Intersects(GetCollisionRotatedRectangle())
+                    || InteractableObject.rightInteractionArea.Intersects(GetCollisionRotatedRectangle()) 
+                    || InteractableObject.leftInteractionArea.Intersects(GetCollisionRotatedRectangle())
+                    || InteractableObject.bottomInteractionArea.Intersects(GetCollisionRotatedRectangle())
+                    )
+                {
+
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                        InteractableObject.PlayerInteracts();
+                    break;
+                }
+               
+
+               
+                
+            }
+
         }
 
 		public override void Draw()
@@ -55,13 +72,8 @@ namespace Heist
 			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperLeftCorner()), Color.White);
 			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerRightCorner()), Color.White);
 			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperRightCorner()), Color.White);
-
 			sprite.Draw();
 
-            ///Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.currentCamera.cameraPos);
-            //CO spriteBatch.Draw(texture, new Rectangle((int)pos.X, (int)pos.Y, 116, 85), new Rectangle((int)pos.X, (int)pos.Y, 116, 85), Color.White, angle + (float)Math.PI, new Vector2(new Rectangle((int)pos.X, (int)pos.Y, 116, 85).Width / 2, new Rectangle((int)pos.X, (int)pos.Y, 116, 85).Height / 2), SpriteEffects.None, 0);
-            ///spriteBatch.Draw(texture, new Rectangle((int)transformedPosforCamera.X + (116 / 2)/*no se pq funciona*/ , (int)transformedPosforCamera.Y + (85 / 2) /*no se pq funciona*/, 116, 85), new Rectangle(0, 0, 116, 85), Color.White, angle, new Vector2(58, 43), SpriteEffects.None, 0);
-            //CO spriteBatch.Draw(texture, new Rectangle((int)pos.X, (int)pos.Y, texture.Width, texture.Height), null, Color.White, angle + (float)Math.PI, new Vector2(68, 43), SpriteEffects.None, 0);
         }
 
         public override RotatedRectangle GetCollisionRotatedRectangle()
@@ -78,6 +90,7 @@ namespace Heist
 
         public void SetValidPos()
         {
+            //self fucking explanatory
             pos = validPos;
             angle = validAngle;
         }

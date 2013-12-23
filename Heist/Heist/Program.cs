@@ -12,6 +12,7 @@ namespace Heist
         {
             using (Game1 game = new Game1())
             {
+                //Party On!
                 game.Run();
             }
         }

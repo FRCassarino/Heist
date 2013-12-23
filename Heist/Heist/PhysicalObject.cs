@@ -52,17 +52,7 @@ namespace Heist
 
         public virtual void Draw()
         {
-            //Draws itself
-			//if (dimensions == Vector2.Zero)
-			//{
-			//    dimensions = new Vector2(texture.Width, texture.Height);
-			//}
 			sprite.Draw();
-
-            //Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.currentCamera.position);
-			//Rectangle source = new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y);
-			//Game1.sb.Draw(texture, Level.currentCamera.posInCamera(pos), source, Color.White, 0.0f, Level.currentCamera.posInCamera(Vector2.Zero), SpriteEffects.None, 0);
-
         }
        
     }

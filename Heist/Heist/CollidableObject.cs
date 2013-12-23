@@ -17,10 +17,7 @@ namespace Heist
 
         virtual public RotatedRectangle GetCollisionRotatedRectangle()
         {
-            //CO new Rectangle((int)this.pos.X, (int)this.pos.Y, 564, 235);
-
-            //Gives the RotatedRectangle which will be used as the bounding box
-            return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, texture.Width, texture.Height), 0);
+			return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, texture.Width, texture.Height), 0);
         }
 
         public CollidableObject(Vector2 pos, Texture2D texture)

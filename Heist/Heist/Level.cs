@@ -16,20 +16,13 @@ namespace Heist
 {
     class Level
     {
-        //List of every object you can collide with in the current level
-        public static List<CollidableObject> collidableObjects = new List<CollidableObject>();
+        //Lists differently typed objects
+        public static List<CollidableObject> collidableObjects = new List<CollidableObject>(); //Objects you can collide to
+        public static List<InteractableObject> interactableObjects = new List<InteractableObject>();
         
-        
-        
-        //placeholder player, camera and inert object to test stuff
-        
-        
+
         public static Camera currentCamera;         
-        public Player player;  
-        public InertObject testInertObject;
-
-
-        public InertObject testInertObject2;
+        public Player player;
         
        
         
@@ -47,23 +40,31 @@ namespace Heist
 
         //placeholder textures
         public static Texture2D dot = Game1.contentManager.Load<Texture2D>("textures/testcollidable");
-        public Texture2D testTexture = Game1.contentManager.Load<Texture2D>("textures/wall1");
+        public static Texture2D testTexture = Game1.contentManager.Load<Texture2D>("textures/wall1");
         
         
         
         public Level(string name)
         {
+			currentCamera = new Camera(player.pos);
+
+            //uses the levelid passed in initialization to open the corresponding level file
 			string filestr = File.ReadAllText("../../../../HeistContent/levels/" + name + ".txt");
-			// string filestr = Game1.contentManager.Load<string>("levels/" + name + ".txt");
+			//Splits the file into each line
 			string[] lines = filestr.Split('\n');
 
-			// level 1 3000 4000
+			//Uses regular expression to find the line that sets the level 
 			Match match = Regex.Match(lines[0], @"^level ([a-zA-Z0-9]+) (\d+) (\d+)");
-			if (!match.Success) throw new System.Exception("level file must start with /^level name w h$/");
-			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[2].Value), Convert.ToInt32(match.Groups[3].Value));
+			if (!match.Success) throw new System.Exception("level file must start with /^level name w h$/"); //makes sure the first line gives the level info
+			//sets the levelDimensions as read in the file
+            this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[2].Value), Convert.ToInt32(match.Groups[3].Value));
+            //creates an array of every line but the first one
             string[] rest = lines.Skip(1).ToArray();
-			foreach (string l in rest) {
-				string[] ws = l.Split(' ');
+			//iterates through every line but the first one
+            foreach (string l in rest) {
+				
+                string[] ws = l.Split(' ');
+                //switch that creates an object depending on the type specified 
 				switch (ws[0]) {
 
                     case "Player": // InertObject img x y w h
@@ -101,27 +102,15 @@ namespace Heist
                         }
                         new LivingObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
                         break;
-                    
-                    
+                    case "InteractableObject": // InertObject img x y w h
+                        if (!Game1.textures.ContainsKey(ws[1]))
+                        {
+                            Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
+                        }
+                        new InteractableObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]]);
+                        break;
 				}
 			}
-            
-
-            currentCamera = new Camera(player.pos);
-            //testPlayer = new Player(new Vector2(0,0), testTexture);
-            testInertObject = new InertObject(new Vector2(600, 600), testTexture, new Vector2(400,200));
-            testInertObject2 = new InertObject(new Vector2(300, 0), testTexture);
-            
-
-
-            //CO topOuterWall = new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).Y), (int)levelDimensions.X, 10);
-            //CO bottomOuterWall = new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, (int)levelDimensions.Y), testCamera.cameraPos).Y), (int)levelDimensions.X, 10);
-            //CO rightOuterWall = new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2((int)levelDimensions.X, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).Y), 10, (int)levelDimensions.Y);
-            //CO leftOuterWall = new Rectangle((int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).X), (int)(CustomMath.transformPosIntoCameraPos(new Vector2(0, 0), testCamera.cameraPos).Y), 10, (int)levelDimensions.Y);
-
-
-
-           
             
         }
 
@@ -135,7 +124,6 @@ namespace Heist
             {
                 CollidableObject.Update();
             }
-            
             
             if (player.pos.X > levelDimensions.X)
             {
@@ -159,10 +147,9 @@ namespace Heist
 
 
 
-
+            //iterates through every collidableObject and check for collision
             PhysicsManager.IterateCollisionList(collidableObjects);
             
-            // Vector2 centeredPlayerPos = new Vector2(player.pos.X -currentCamera.cameraWidth /2, player.pos.Y - currentCamera.cameraHeight/2 );
             currentCamera.position = player.pos;
 
 
@@ -182,13 +169,14 @@ namespace Heist
             //right texture
             foreach (CollidableObject CollidableObject in collidableObjects)
             {
-                if (CollidableObject is Player)
+              
+
+                if (CollidableObject is InertObject)
                 {
-                    
                     CollidableObject.Draw(); 
                 }
 
-                if (CollidableObject is InertObject)
+                if (CollidableObject is Player)
                 {
                     CollidableObject.Draw();
                 }
@@ -198,9 +186,5 @@ namespace Heist
             
         } 
 
-          
-
-
-        
     }
 }

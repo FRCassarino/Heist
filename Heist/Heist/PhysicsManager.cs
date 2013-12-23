@@ -57,7 +57,7 @@ namespace Heist
             }*/
         }
 
-        static bool CheckCollision(CollidableObject collidableObject, CollidableObject collidableObject2)
+        internal static bool CheckCollision(CollidableObject collidableObject, CollidableObject collidableObject2)
         {
 
             //uses the intestects method built into RotatedRectangle and checks for collision between both objects
