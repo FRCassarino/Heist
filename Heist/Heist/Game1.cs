@@ -17,13 +17,17 @@ namespace Heist
     /// </summary>
     class Game1 : Microsoft.Xna.Framework.Game
     {
-  
+        
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public static SpriteBatch spriteBatch;
+        //Creates a Dictionary of all of the textures (every texture matched to a string texturename)
 		public static Dictionary<string, Texture2D> textures = new Dictionary<string,Texture2D>();
+        //Sets the resolution
 		public static int WindowHeight = 600;
 		public static int WindowWidth = 800;
 		public static ContentManager contentManager;
+
+        //Declares the currentLevel
 		public Level currentLevel;
         
        
@@ -44,6 +48,7 @@ namespace Heist
         /// </summary>
         protected override void Initialize()
         {
+            //Initializes the level, and it is sent a number/string which tells him which level file to load
 			currentLevel = new Level("0");
             base.Initialize();
         }

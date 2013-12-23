@@ -111,6 +111,7 @@
     <Compile Include="CollidableObject.cs" />
     <Compile Include="CustomMath.cs" />
     <Compile Include="GameLogic.cs" />
+    <Compile Include="InteractableObject.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LivingObject.cs" />
     <Compile Include="InertObject.cs" />

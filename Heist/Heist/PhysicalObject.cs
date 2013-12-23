@@ -54,9 +54,11 @@ namespace Heist
                 dimensions = new Vector2(texture.Width, texture.Height);
             }
 
-
+            //Adjusts the pos to take the camera into account
             Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.testCamera.cameraPos);
-            spriteBatch.Draw(texture, new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, texture.Width, texture.Height), new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), Color.White);
+
+            //Draws a physical object.
+            spriteBatch.Draw(texture, new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, (int)dimensions.X, (int)dimensions.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White);
 
         }
        
