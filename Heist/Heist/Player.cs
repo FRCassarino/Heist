@@ -25,8 +25,8 @@ namespace Heist
         
 
 
-        public Player(Vector2 pos, Texture2D texture, Camera camera)
-            : base(pos, texture, camera)
+        public Player(Vector2 pos, Texture2D texture)
+            : base(pos, texture)
         {
             
         }
@@ -52,7 +52,7 @@ namespace Heist
             spriteBatch.Draw(Level.dot, GetCollisionRotatedRectangle().UpperRightCorner(), Color.White);
 
 
-            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, camera.cameraPos);
+            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.testCamera.cameraPos);
             //CO spriteBatch.Draw(texture, new Rectangle((int)pos.X, (int)pos.Y, 116, 85), new Rectangle((int)pos.X, (int)pos.Y, 116, 85), Color.White, angle + (float)Math.PI, new Vector2(new Rectangle((int)pos.X, (int)pos.Y, 116, 85).Width / 2, new Rectangle((int)pos.X, (int)pos.Y, 116, 85).Height / 2), SpriteEffects.None, 0);
             spriteBatch.Draw(texture, new Rectangle((int)transformedPosforCamera.X + (116 / 2)/*no se pq funciona*/ , (int)transformedPosforCamera.Y + (85 / 2) /*no se pq funciona*/, 116, 85), new Rectangle(0, 0, 116, 85), Color.White, angle, new Vector2(58, 43), SpriteEffects.None, 0);
             //CO spriteBatch.Draw(texture, new Rectangle((int)pos.X, (int)pos.Y, texture.Width, texture.Height), null, Color.White, angle + (float)Math.PI, new Vector2(68, 43), SpriteEffects.None, 0);
@@ -64,7 +64,7 @@ namespace Heist
             //CO return new RotatedRectangle((int)pos.X, (int)pos.Y, 116, 85);
             
             //return the bounding box for the player
-            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, camera.cameraPos);
+            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.testCamera.cameraPos);
                         
             return new RotatedRectangle(new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, 116, 85), angle);
             //CO return base.GetCollisionRectangle();

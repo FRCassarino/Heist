@@ -19,7 +19,7 @@ namespace Heist
         //All share the fact that they have a position and a given angle       
         public Vector2 pos;
         public float angle;
-        internal Camera camera;
+        
         public Vector2 dimensions;
         public Texture2D texture;
         
@@ -53,9 +53,9 @@ namespace Heist
             {
                 dimensions = new Vector2(texture.Width, texture.Height);
             }
-            
 
-            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, camera.cameraPos);
+
+            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.testCamera.cameraPos);
             spriteBatch.Draw(texture, new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, texture.Width, texture.Height), new Rectangle(0, 0, (int)dimensions.X, (int)dimensions.Y), Color.White);
 
         }

@@ -24,12 +24,12 @@ namespace Heist
             //CO new Rectangle((int)this.pos.X, (int)this.pos.Y, 564, 235);
 
             //Gives the RotatedRectangle which will be used as the bounding box
-            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, camera.cameraPos);
+            Vector2 transformedPosforCamera = CustomMath.transformPosIntoCameraPos(pos, Level.testCamera.cameraPos);
 
-            return new RotatedRectangle(new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, 564, 235), 0);
+            return new RotatedRectangle(new Rectangle((int)transformedPosforCamera.X, (int)transformedPosforCamera.Y, texture.Width, texture.Height), 0);
         }
 
-        public CollidableObject(Vector2 pos, Texture2D texture, Camera camera)
+        public CollidableObject(Vector2 pos, Texture2D texture)
             : base(pos, texture)
         {
             //Makes sure every collidableObject is added to the list, that is later used to iterate
@@ -37,18 +37,18 @@ namespace Heist
             Level.collidableObjects.Add(this);
             
             //Sets the camera
-            this.camera = camera;
+            
         }
 
-        public CollidableObject(Vector2 pos, Texture2D texture, Camera camera, Vector2 dimensions)
+        public CollidableObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
             : base(pos, texture, dimensions)
         {
             //Makes sure every collidableObject is added to the list, that is later used to iterate
             //through all the collidableObjects by the collision Manager
             Level.collidableObjects.Add(this);
 
-            //Sets the camera
-            this.camera = camera;
+            
+            
         }
 
         virtual public void CollisionDetected()
