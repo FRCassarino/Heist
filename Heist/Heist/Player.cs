@@ -35,29 +35,33 @@ namespace Heist
 
         public override void Update(GameTime time) 
         {
-			base.Update(time);
+			//base.Update(time);
+			sprite.destination.X = (int)pos.X;
+			sprite.destination.Y = (int)pos.Y;
+			sprite.angle = angle;
 			Level.currentCamera.position = pos;
             Move();
 			sprite.Update(time);
-            foreach (InteractableObject InteractableObject in Level.interactableObjects)
-            {
-                RotatedRectangle asdf = GetCollisionRotatedRectangle();
-                if (InteractableObject.upperInteractionArea.Intersects(GetCollisionRotatedRectangle())
-                    || InteractableObject.rightInteractionArea.Intersects(GetCollisionRotatedRectangle()) 
-                    || InteractableObject.leftInteractionArea.Intersects(GetCollisionRotatedRectangle())
-                    || InteractableObject.bottomInteractionArea.Intersects(GetCollisionRotatedRectangle())
-                    )
-                {
 
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                        InteractableObject.PlayerInteracts();
-                    break;
-                }
+			//foreach (InteractableObject InteractableObject in Level.interactableObjects)
+			//{
+			//    RotatedRectangle asdf = GetCollisionRotatedRectangle();
+			//    if (InteractableObject.upperInteractionArea.Intersects(GetCollisionRotatedRectangle())
+			//        || InteractableObject.rightInteractionArea.Intersects(GetCollisionRotatedRectangle()) 
+			//        || InteractableObject.leftInteractionArea.Intersects(GetCollisionRotatedRectangle())
+			//        || InteractableObject.bottomInteractionArea.Intersects(GetCollisionRotatedRectangle())
+			//        )
+			//    {
+
+			//        if (Keyboard.GetState().IsKeyDown(Keys.Space))
+			//            InteractableObject.PlayerInteracts();
+			//        break;
+			//    }
                
 
                
                 
-            }
+			//}
 
         }
 
@@ -68,16 +72,17 @@ namespace Heist
             //spriteBatch.Draw(dot, pos, Color.White);
            
             // Vertices colission box for testing purposes
-			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerLeftCorner()), Color.White);
-			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperLeftCorner()), Color.White);
-			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerRightCorner()), Color.White);
-			Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperRightCorner()), Color.White);
-			sprite.Draw();
+			//Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerLeftCorner()), Color.White);
+			//Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperLeftCorner()), Color.White);
+			//Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerRightCorner()), Color.White);
+			//Game1.sb.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperRightCorner()), Color.White);
+			//sprite.Draw(pos, angle);
+			base.Draw();
         }
 
         public override RotatedRectangle GetCollisionRotatedRectangle()
         {
-            return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, 116, 85), angle);
+            return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), angle);
             //CO return base.GetCollisionRectangle();
         }
 
@@ -105,7 +110,6 @@ namespace Heist
         public void Move()
         {
             
-           
             KeyboardState KS = Keyboard.GetState();
 
 			if (KS.IsKeyDown(Keys.LeftShift)) {

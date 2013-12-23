@@ -72,7 +72,7 @@ namespace Heist
                         {
                             Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
                         }
-                        player = new Player(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], Vector2.Zero);
+						player = new Player(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], new Vector2(Convert.ToInt32(ws[4]), Convert.ToInt32(ws[5])));
                         break;
                     case "InertObject": // InertObject img x y w h
                         if (!Game1.textures.ContainsKey(ws[1]))
@@ -100,7 +100,7 @@ namespace Heist
                         {
                             Game1.textures.Add(ws[1], Game1.contentManager.Load<Texture2D>(ws[1]));
                         }
-                        new LivingObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], Vector2.Zero);
+						new LivingObject(new Vector2(Convert.ToInt32(ws[2]), Convert.ToInt32(ws[3])), Game1.textures[ws[1]], new Vector2(Convert.ToInt32(ws[4]), Convert.ToInt32(ws[5])));
                         break;
                     case "InteractableObject": // InertObject img x y w h
                         if (!Game1.textures.ContainsKey(ws[1]))
@@ -125,25 +125,25 @@ namespace Heist
                 CollidableObject.Update(time);
             }
             
-            if (player.pos.X > levelDimensions.X)
-            {
-                player.SetValidPos();
-            }
+			//if (player.pos.X > levelDimensions.X)
+			//{
+			//    player.SetValidPos();
+			//}
 
-            if (player.pos.Y > levelDimensions.Y)
-            {
-                player.SetValidPos();
-            }
+			//if (player.pos.Y > levelDimensions.Y)
+			//{
+			//    player.SetValidPos();
+			//}
 
-            if (player.pos.X < 0)
-            {
-                player.SetValidPos();
-            }
+			//if (player.pos.X < 0)
+			//{
+			//    player.SetValidPos();
+			//}
 
-            if (player.pos.Y < 0)
-            {
-                player.SetValidPos();
-            }
+			//if (player.pos.Y < 0)
+			//{
+			//    player.SetValidPos();
+			//}
 
 
 

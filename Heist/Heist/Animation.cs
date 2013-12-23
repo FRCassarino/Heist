@@ -59,12 +59,11 @@ namespace Heist {
 			}
 		}
 
-		public void Draw()
+		public void Draw(Vector2 position, float angle)
 		{
-			Rectangle posc = Level.currentCamera.posInCamera(destination);
-			Vector2 offset = 0.5f * new Vector2(source.Width / 2, source.Height / 2);
-			Rectangle dest = new Rectangle(posc.X + (int)offset.X, posc.Y + (int)offset.X, destination.Width, destination.Height);
-			Game1.sb.Draw(texture, dest, source, Color.White, angle, offset, SpriteEffects.None, 0);
+			Vector2 offset = new Vector2(source.Width / 2, source.Height / 2);
+			Vector2 pc = Level.currentCamera.posInCamera(position) + offset;
+			Game1.sb.Draw(texture, new Rectangle((int)pc.X, (int)pc.Y, destination.Width, destination.Height), source, Color.White, angle, offset, SpriteEffects.None, 0);
 		}
 	}
 }

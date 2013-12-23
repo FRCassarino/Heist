@@ -49,7 +49,9 @@ namespace Heist
 
         public virtual void Draw()
         {
-			sprite.Draw();
+			Vector2 pc = Level.currentCamera.posInCamera(pos);
+			//Game1.sb.Draw(Level.dot, new Rectangle((int)pc.X -1 , (int)pc.Y - 1, (int)dimensions.X + 2, (int)dimensions.Y + 2), Color.White);
+			sprite.Draw(pos, angle);
         }
        
     }
