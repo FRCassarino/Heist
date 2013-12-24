@@ -9,61 +9,99 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Heist {
-	class Animation {
+namespace Heist
+{
+	class Animation
+	{
 
-		public int currentFrame = 0;
-		public int totalFrames;
-		public int horFrameNum;
-		public int verFrameNum;
-		public float interval;
-		public float angle;
+		/* An animation is created from a texture which is cut
+		 * into a {horizontalFrameCount} by {verticalFrameCount} grid.
+		 * Its frames are indexed from 0 from left to right and top to
+		 * bottom. eg.: 4x4
+		 *   _______________
+		 *  |  0|  1|  2|  3|
+		 *  |___|___|___|__ |
+		 *	|  4|  5|  6|  7|
+		 *	|___|___|___|__ |
+		 *  |  8|  9| 10| 11|
+		 *  |___|___|___|__ |
+		 *  | 12| 13| 14| 15|
+		 *  |___|___|___|__ |
+		 * 
+		 * An {activeFrames} property can be set restricting the set
+		 * of frames that are looped through and drawn, changing every
+		 * {interval} milliseconds.
+		 */
+
 		public Texture2D texture;
-		private Rectangle source;
-		float timer = 0;
-		public int[] frames; // List of frames to loop, change it according to your needs. eg. player {walk-left: [ 0 1 0 2 ], walk-right: [0 3 0 4]}
-		public Rectangle destination;
-		private bool cambio = false;
-
-
-		public Animation(Texture2D texture, Rectangle destination, Rectangle source, int[] frames, float interval, float angle) {
-
-			if (texture.Height % source.Height != 0 || texture.Width % source.Width != 0)
-				throw new Exception("Source rect must fit exactly an integer number of times in the texture.");
-
-			this.texture = texture;
-			this.horFrameNum = texture.Width / source.Width;
-			this.verFrameNum = texture.Height / source.Height;
-			this.totalFrames = horFrameNum * verFrameNum;
-			this.frames = frames;
-
-			this.interval = interval;
-			this.destination = destination;
-			this.source = source;
-			this.angle = angle;
+		//private int[] activeFrames;
+		//public int[] ActiveFrames
+		//{
+		//    get	{ return activeFrames; }
+		//    set	{ activeFrames = value.Intersect(frames).ToArray(); }
+		//}
+		public int interval;
+		public float angle;
+		public Rectangle destination
+		{
+			get { return destin; }
+			set { destin = value; }
 		}
 
+		int[] frames;
+		Rectangle source;
+		Rectangle destin;
+		int currentFrame = 0;
+		int horizontalFrameCount;
+		int verticalFrameCount;
+
+		public Animation(Texture2D texture, int interval, float angle = 0f, int horizontalFrameCount = 1, int verticalFrameCount = 1, Rectangle destination = default(Rectangle))
+		{
+			this.texture = texture;
+
+			source = new Rectangle(0, 0, texture.Width / horizontalFrameCount, texture.Height / verticalFrameCount);
+			if (destination == default(Rectangle))
+				destin = new Rectangle(0, 0, source.Width, source.Height);
+			else
+				destin = destination;
+			
+			this.interval = interval;
+			this.angle = angle;
+			this.horizontalFrameCount = horizontalFrameCount;
+			this.verticalFrameCount = verticalFrameCount;
+			frames = Enumerable.Range(0, horizontalFrameCount * verticalFrameCount).ToArray();
+			//activeFrames = frames;
+			//currentFrame = activeFrames[0];
+		}
+
+
+		int last = 0;
+		int now = 0;
 		public void Update(GameTime time)
 		{
 			if (interval != 0) {
-				float elapsed = (float)time.ElapsedGameTime.TotalMilliseconds;
-				timer += elapsed;
-				if (timer > interval && !cambio) {
-					cambio = true;
-					timer = 0;
+				now = (int)time.TotalGameTime.TotalMilliseconds;
+				if (now - last > interval) {
+					last = now;
 					currentFrame = frames[(currentFrame + 1) % frames.Count()];
-					source.X = source.Width * (currentFrame % horFrameNum);
-					source.Y = source.Height * (currentFrame / verFrameNum);
+					source.X = source.Width * (currentFrame % horizontalFrameCount);
+					source.Y = source.Height * (currentFrame / horizontalFrameCount);
 				}
 			}
 		}
 
 		public void Draw(Vector2 position, float angle)
 		{
-			cambio = false;
-			Vector2 offset = new Vector2(this.source.Width / 2, this.source.Height / 2);
-			Vector2 pc = Level.currentCamera.posInCamera(position) + offset;
-			Game1.spriteBatchStatic.Draw(texture, new Rectangle((int)pc.X, (int)pc.Y, destination.Width, destination.Height), source, Color.White, angle, offset, SpriteEffects.None, 0);
+			Vector2 offset = new Vector2(destin.Width / 2, destin.Height / 2);
+			Vector2 drawCoords = Level.currentCamera.posInCamera(position) + offset;
+			Game1.spriteBatch.Draw(texture,
+				new Rectangle((int)drawCoords.X, (int)drawCoords.Y, destin.Width, destin.Height),
+				source,
+				Color.White,
+				angle,
+				offset, // Move the image origin to the center of the texture so rotation is from the center of the image.
+				SpriteEffects.None,
+				0);
 		}
 	}
 }

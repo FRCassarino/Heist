@@ -11,35 +11,35 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Heist
 {
-    class Camera
-    {
-        //The dimensions of the camera
-        public int cameraHeight;
-        public int cameraWidth;
-        public Vector2 position;
-        
+	class Camera
+	{
+		//The dimensions of the camera
+		public int cameraHeight;
+		public int cameraWidth;
+		public Vector2 position;
+		public Vector2 topPos
+		{
+			get { return position - 0.5f * new Vector2(cameraWidth, cameraHeight); }
+			set { position = value + -0.5f * new Vector2(cameraWidth, cameraHeight); }
+		}
 
-        public Camera(Vector2 position)
-        {
-            //the constructor takes the dimensions
-            this.cameraHeight = Game1.WindowHeight;
-			this.cameraWidth = Game1.WindowWidth;
+		public Camera(Vector2 position)
+		{
+			//the constructor takes the dimensions
+			this.cameraHeight = Game1.WINDOW_HEIGTH;
+			this.cameraWidth = Game1.WINDOW_WIDTH;
 			this.position = position;
-        }
-
-		public Vector2 topPos() {
-			return position - 0.5f * new Vector2(cameraWidth, cameraHeight);
 		}
 
 		public Vector2 posInCamera(Vector2 posInWorld)
 		{
-			return posInWorld - topPos();
+			return posInWorld - topPos;
 		}
 
 		public Rectangle posInCamera(Rectangle posInWorld)
 		{
-			return new Rectangle(posInWorld.X - (int)position.X + Game1.WindowWidth / 2, posInWorld.Y - (int)position.Y + Game1.WindowHeight / 2, posInWorld.Width, posInWorld.Height);
+			return new Rectangle(posInWorld.X - (int)position.X + Game1.WINDOW_WIDTH / 2, posInWorld.Y - (int)position.Y + Game1.WINDOW_HEIGTH / 2, posInWorld.Width, posInWorld.Height);
 		}
-    
-    }
+
+	}
 }

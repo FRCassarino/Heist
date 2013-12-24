@@ -29,15 +29,14 @@ namespace Heist
 
         public PhysicalObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
         {
-            //all take a pos when created
             this.pos = pos;
             this.texture = texture;
 			this.dimensions = dimensions;
 			if (dimensions == Vector2.Zero) {
 				this.dimensions = new Vector2(texture.Width, texture.Height);
 			}
-			this.sprite = new Animation(texture, new Rectangle((int)pos.X, (int)pos.Y, (int)this.dimensions.X, (int)this.dimensions.Y), new Rectangle(0, 0, (int)this.dimensions.X, (int)this.dimensions.Y), new[] { 0 }, 0, 0);
-			this.dimensions = dimensions; //???
+			this.sprite = new Animation(texture, 0); // Actually might not be needed to create an Animation for every PhysicalObject.
+			this.dimensions = dimensions;
         }
 
 		public virtual void Update(GameTime time)
@@ -46,7 +45,7 @@ namespace Heist
         }
 
         public virtual void Draw()
-        {			
+        {
 			sprite.Draw(pos, angle);
         }
        
