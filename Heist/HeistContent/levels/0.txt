@@ -1,5 +1,44 @@
-level 0 3000 4000
-Player textures/Ship 0 0 88 83
-InertObject textures/Wall 500 1000 0 0
-InertObject textures/wall1 500 300 0 0
-InteractableObject textures/ClosedDoor 250 600 0 0
+level 0 880 1000
+PhysicalObject textures/FancyFloor 0 0 0 0
+
+CollidableObject textures/Wall 0 95 22 95
+CollidableObject textures/Wall 0 190 22 95
+CollidableObject textures/Wall 0 285 22 95
+CollidableObject textures/Wall 0 380 22 95
+CollidableObject textures/Wall 0 475 22 95
+CollidableObject textures/Wall 0 570 22 95
+CollidableObject textures/Wall 0 665 22 95
+CollidableObject textures/Wall 0 760 22 95
+CollidableObject textures/Wall 0 855 110 19
+CollidableObject textures/Wall 110 855 110 19
+CollidableObject textures/Wall 220 855 110 19
+CollidableObject textures/Wall 330 855 110 19
+CollidableObject textures/Wall 550 855 110 19
+CollidableObject textures/Wall 660 855 110 19
+CollidableObject textures/Wall 770 855 110 19
+
+
+CollidableObject textures/Wall 880 0 22 95
+CollidableObject textures/Wall 880 95 22 95
+CollidableObject textures/Wall 880 190 22 95
+CollidableObject textures/Wall 880 285 22 95
+CollidableObject textures/Wall 880 380 22 95
+CollidableObject textures/Wall 880 475 22 95
+CollidableObject textures/Wall 880 570 22 95
+CollidableObject textures/Wall 880 665 22 95
+CollidableObject textures/Wall 880 760 22 95
+
+CollidableObject textures/Wall 110 0 110 19
+CollidableObject textures/Wall 220 0 110 19
+CollidableObject textures/Wall 330 0 110 19
+CollidableObject textures/Wall 440 0 110 19
+CollidableObject textures/Wall 550 0 110 19
+CollidableObject textures/Wall 660 0 110 19
+CollidableObject textures/Wall 770 0 110 19
+
+CollidableObject textures/Scaffold 22 200 0 0
+
+
+
+Door textures/ClosedDoor 440 855 0 0
+Player textures/Player 700 700 130 130

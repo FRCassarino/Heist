@@ -14,6 +14,8 @@ namespace Heist
 {
     class PhysicalObject
     {
+
+        
        //The most basic blueprint for any object that will be visible on-screen
         
         //All share the fact that they have a position and a given angle       
@@ -32,11 +34,16 @@ namespace Heist
             this.pos = pos;
             this.texture = texture;
 			this.dimensions = dimensions;
-			if (dimensions == Vector2.Zero) {
+			if (dimensions == Vector2.Zero) 
+            {
 				this.dimensions = new Vector2(texture.Width, texture.Height);
 			}
-			this.sprite = new Animation(texture, 0); // Actually might not be needed to create an Animation for every PhysicalObject.
-			this.dimensions = dimensions;
+
+            this.sprite = new Animation(texture, 0, destination: new Rectangle(0 , 0, (int)dimensions.X, (int)dimensions.Y)); // Actually might not be needed to create an Animation for every PhysicalObject.
+			
+
+            Level.physicalObjects.Add(this);
+
         }
 
 		public virtual void Update(GameTime time)

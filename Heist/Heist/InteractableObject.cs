@@ -13,11 +13,15 @@ namespace Heist
 {
     class InteractableObject : InertObject
     {
+        KeyboardState oldState;
+
         public const float INTERACTION_DISTANCE = 25;
         public RotatedRectangle upperInteractionArea;
         public RotatedRectangle rightInteractionArea;
         public RotatedRectangle leftInteractionArea;
         public RotatedRectangle bottomInteractionArea;
+
+
        
         public InteractableObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
             : base(pos, texture, dimensions)
@@ -32,16 +36,22 @@ namespace Heist
         }
 
         
-        public void PlayerInteracts()
+        public virtual void PlayerInteracts()
         {
-            if (sprite.texture == Game1.textures["textures/ClosedDoor"])
+           
+        }
+
+        public void CheckIfPlayerInteracts()
+        {
+            var newState = Keyboard.GetState();
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !oldState.IsKeyDown(Keys.Space))
             {
-            sprite.texture = Game1.textures["textures/Wall"];
+                PlayerInteracts();
+
+
             }
-            else 
-            {
-            sprite.texture =  Game1.textures["textures/ClosedDoor"];
-            }
+
+            oldState = newState;
         }
 
     }   

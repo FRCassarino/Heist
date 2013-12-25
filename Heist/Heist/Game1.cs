@@ -12,6 +12,8 @@ using System.IO;
 
 namespace Heist
 {
+
+
 	class Game1 : Microsoft.Xna.Framework.Game
 	{
 		GraphicsDeviceManager graphics;
@@ -19,6 +21,7 @@ namespace Heist
 		public static ContentManager contentManager; // Make it static to be able to Load;
 		public static int WINDOW_WIDTH = 800;
 		public static int WINDOW_HEIGTH = 600;
+
 		public Level currentLevel;
 		public static Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
 

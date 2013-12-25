@@ -22,22 +22,21 @@ namespace Heist
             {
                 for (int j = i; j < collidableObjects.Count; j++)
                 {
-                    bool collisionDetected = false;
+                    
                     if (i != j && PhysicsManager.CheckCollision(collidableObjects[i], collidableObjects[j]) == true)
                     {
                         //if collision is detected, it tells the colliding objects so they can execute their logic
                         collidableObjects[i].CollisionDetected();
                         collidableObjects[j].CollisionDetected();
-                        collisionDetected = true;
+                        
 
                     }
-                     
-                    if (collisionDetected == false && j == (collidableObjects.Count -1)) //it makes sure that there's been no collision with any object in the list
+                    else if (j == (collidableObjects.Count -1))
                     {
-                        //if collision is not detected, it passes the objects their current pos for later use
                         collidableObjects[i].PassValidPos(collidableObjects[i].pos, collidableObjects[i].angle);
-                        collidableObjects[j].PassValidPos(collidableObjects[j].pos, collidableObjects[j].angle);
                     }
+                     
+                 
                     
                 }
             }
@@ -49,6 +48,21 @@ namespace Heist
         {
 
             //uses the intestects method built into RotatedRectangle and checks for collision between both objects
+            if(collidableObject is Door)
+            {
+                Door collidableObjectDoor = (Door)collidableObject;
+                if (collidableObjectDoor.currentState == Door._DoorState.Open)
+                    return false;
+            }
+
+            if (collidableObject2 is Door)
+            {
+                Door collidableObjectDoor = (Door)collidableObject2;
+                if (collidableObjectDoor.currentState == Door._DoorState.Open)
+                    return false;
+            }
+            
+            
             if (collidableObject.GetCollisionRotatedRectangle().Intersects(collidableObject2.GetCollisionRotatedRectangle()))
                return true;
             else

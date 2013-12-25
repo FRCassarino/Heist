@@ -17,7 +17,10 @@ namespace Heist
 
         virtual public RotatedRectangle GetCollisionRotatedRectangle()
         {
-			return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, texture.Width, texture.Height), 0);
+            if (dimensions != Vector2.Zero)
+			return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), angle);
+            else
+            return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, texture.Width, texture.Height), angle);
         }
 
         public CollidableObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
