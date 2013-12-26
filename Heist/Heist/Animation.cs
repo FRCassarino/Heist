@@ -28,18 +28,22 @@ namespace Heist
 		 *  | 12| 13| 14| 15|
 		 *  |___|___|___|__ |
 		 * 
-		 * An {activeFrames} property can be set restricting the set
+		 * An {ActiveFrames} property can be set restricting the set
 		 * of frames that are looped through and drawn, changing every
-		 * {interval} milliseconds.
+		 * {interval} milliseconds. Setting {ActiveFrames = null} will
+		 * not restrict the set, leaving every frame in the loop.
 		 */
 
 		public Texture2D texture;
-		//private int[] activeFrames;
-		//public int[] ActiveFrames
-		//{
-		//    get	{ return activeFrames; }
-		//    set	{ activeFrames = value.Intersect(frames).ToArray(); }
-		//}
+		private int[] activeFrames;
+		public int[] ActiveFrames
+		{
+			get { return activeFrames; }
+			set {
+				if (value == null) activeFrames = frames;
+				else activeFrames = value.Intersect(frames).ToArray();
+			}
+		}
 		public int interval;
 		public float angle;
 		public Rectangle destination
@@ -61,7 +65,7 @@ namespace Heist
 
 			source = new Rectangle(0, 0, texture.Width / horizontalFrameCount, texture.Height / verticalFrameCount);
 			if (destination == default(Rectangle))
-				destin = new Rectangle(0, 0, source.Width, source.Height);
+				destin = new Rectangle(0, 0, texture.Width, texture.Height);
 			else
 				destin = destination;
 			
@@ -70,8 +74,8 @@ namespace Heist
 			this.horizontalFrameCount = horizontalFrameCount;
 			this.verticalFrameCount = verticalFrameCount;
 			frames = Enumerable.Range(0, horizontalFrameCount * verticalFrameCount).ToArray();
-			//activeFrames = frames;
-			//currentFrame = activeFrames[0];
+			activeFrames = frames;
+			currentFrame = activeFrames[0];
 		}
 
 
@@ -83,23 +87,24 @@ namespace Heist
 				now = (int)time.TotalGameTime.TotalMilliseconds;
 				if (now - last > interval) {
 					last = now;
-					currentFrame = frames[(currentFrame + 1) % frames.Count()];
+					currentFrame = activeFrames[(currentFrame + 1) % activeFrames.Count()];
 					source.X = source.Width * (currentFrame % horizontalFrameCount);
 					source.Y = source.Height * (currentFrame / horizontalFrameCount);
 				}
 			}
 		}
 
-		public void Draw(Vector2 position, float angle)
+		public void Draw(Vector2 position, float angle, bool debug = false)
 		{
-			Vector2 offset = new Vector2(destin.Width / 2, destin.Height / 2);
-			Vector2 drawCoords = Level.currentCamera.posInCamera(position) + offset;
+			Vector2 sourceOrigin = new Vector2(source.Width / 2, source.Height / 2);
+			Vector2 drawCoords = Level.currentCamera.posInCamera(position);
+
 			Game1.spriteBatch.Draw(texture,
 				new Rectangle((int)drawCoords.X, (int)drawCoords.Y, destin.Width, destin.Height),
 				source,
 				Color.White,
 				angle,
-				offset, // Move the image origin to the center of the texture so rotation is from the center of the image.
+				sourceOrigin, // Move the image origin to the center of the texture so rotation is from the center of the image.
 				SpriteEffects.None,
 				0);
 		}

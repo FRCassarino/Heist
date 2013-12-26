@@ -14,21 +14,14 @@ namespace Heist
 {
     class PhysicalObject
     {
+       // The most basic blueprint for any object that will be visible on-screen
 
-        
-       //The most basic blueprint for any object that will be visible on-screen
-        
-        //All share the fact that they have a position and a given angle       
         public Vector2 pos;
         public float angle;
-        
         public Vector2 dimensions;
-        public Texture2D texture;
 		public Animation sprite;
+		public Texture2D texture;
         
-        
-        
-
         public PhysicalObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
         {
             this.pos = pos;
@@ -40,9 +33,7 @@ namespace Heist
 			}
 
             this.sprite = new Animation(texture, 0, destination: new Rectangle(0 , 0, (int)dimensions.X, (int)dimensions.Y)); // Actually might not be needed to create an Animation for every PhysicalObject.
-			
-
-            Level.physicalObjects.Add(this);
+			Level.physicalObjects.Add(this);
 
         }
 
@@ -54,7 +45,16 @@ namespace Heist
         public virtual void Draw()
         {
 			sprite.Draw(pos, angle);
+			DrawBoundingBox();
         }
-       
+
+		public void DrawBoundingBox()
+		{
+			//Vector2 off = new Vector2(2f, 2f);
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerLeftCorner()) - off, Color.White);
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperLeftCorner()) - off, Color.White);
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerRightCorner()) - off, Color.White);
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperRightCorner()) - off, Color.White);	
+		}
     }
 }

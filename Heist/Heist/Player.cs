@@ -13,79 +13,39 @@ namespace Heist
 {
 	class Player : LivingObject
 	{
-		//The basic forward speed
-		public const float FW_VELOCITY = 10;
+		public const float FW_VELOCITY = 7; //The basic forward speed
 		public float runBoost = 1.0f;
 		public new Animation sprite;
         Vector2 validPos;
 		float validAngle;
-        
-		//public int[] walkingFrames = { 1, 0, 2, 3};
-		//public int[] runningFrames = { 2, 3 };
-
-
-        public override void Update(GameTime time) 
-        {
-			
-			
-			Level.currentCamera.position = pos;
-            Move();
-			sprite.Update(time);
-         
-            foreach (InteractableObject InteractableObject in Level.interactableObjects)
-            {
-                RotatedRectangle asdf = GetCollisionRotatedRectangle();
-                if (InteractableObject.upperInteractionArea.Intersects(GetCollisionRotatedRectangle())
-                    || InteractableObject.rightInteractionArea.Intersects(GetCollisionRotatedRectangle())
-                    || InteractableObject.leftInteractionArea.Intersects(GetCollisionRotatedRectangle())
-                    || InteractableObject.bottomInteractionArea.Intersects(GetCollisionRotatedRectangle()
-                    ))
-                {
-                    
-                    if (!InteractableObject.GetCollisionRotatedRectangle().Intersects(GetCollisionRotatedRectangle()))
-                    {
-                        InteractableObject.CheckIfPlayerInteracts();
-                    }
-
-                    
-
-                    //if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                    //    InteractableObject.PlayerInteracts();
-                    //break;
-                }
-            }
-        }
-
-
+		
 		public Player(Vector2 pos, Texture2D texture, Vector2 dimensions)
 			: base(pos, texture, dimensions)
 		{
-			
-			//this.sprite = new Animation(texture, 500, horizontalFrameCount: 3);
-            this.sprite = new Animation(texture, 0, destination: new Rectangle(0,0, (int)dimensions.X, (int)dimensions.Y));
-            
+			this.sprite = new Animation(texture, 100, destination: new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), horizontalFrameCount: 4);   
 		}
 
-	
+        public override void Update(GameTime time) 
+        {
+			Move();
+			//Interact();
 
-		public override void Draw()
+			// Better to put these two lines last, after any other code has changed the player's position.
+			Level.currentCamera.position = pos;
+			sprite.Update(time);
+        }
+
+		public new void Draw()
 		{
-			// Vertices colission box for testing purposes
-			Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerLeftCorner()), Color.White);
-			Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperLeftCorner()), Color.White);
-			Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerRightCorner()), Color.White);
-			Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperRightCorner()), Color.White);
 			sprite.Draw(pos, angle);
+			DrawBoundingBox();
 		}
 
 
 		override public void CollisionDetected()
 		{
 			//If a collision is detected, this sets the player's position and angle back to one where it doesn't collide
-            
 			SetValidPos();
-            
-            
 		}
 
 		public void SetValidPos()
@@ -93,7 +53,6 @@ namespace Heist
 			//self fucking explanatory
 			pos = validPos;
 			angle = validAngle;
-           
 		}
 
 
@@ -106,29 +65,28 @@ namespace Heist
 
 		public void Move()
 		{
-
 			KeyboardState KS = Keyboard.GetState();
 
 			if (KS.IsKeyDown(Keys.LeftShift)) {
-				runBoost = 1.3f;
-				//sprite.ActiveFrames = runningFrames;
+				runBoost = 1.5f;
+				sprite.ActiveFrames = null;
 			} else {
 				runBoost = 1.0f;
-				//sprite.ActiveFrames = walkingFrames;
+				sprite.ActiveFrames = new[] {0};
 			}
 
 			//This if loops make the player move when the keys are pressed, and use some trigonometry to make sure they move in the right angle
 			if (KS.IsKeyDown(Keys.Up)) // UP 
             {
-				pos.X = pos.X + FW_VELOCITY * runBoost * (float)(Math.Cos((double)angle));
-				pos.Y = pos.Y + FW_VELOCITY * runBoost * (float)(Math.Sin((double)angle));
+				pos.X = pos.X - FW_VELOCITY * runBoost * (float)(Math.Cos((double)angle + Math.PI / 2.0));
+				pos.Y = pos.Y - FW_VELOCITY * runBoost * (float)(Math.Sin((double)angle + Math.PI / 2.0));
 			}
 
 
 			if (KS.IsKeyDown(Keys.Down)) // DOWN 
             {
-				pos.X = pos.X - FW_VELOCITY * runBoost * (float)(Math.Cos((double)angle));
-				pos.Y = pos.Y - FW_VELOCITY * runBoost * (float)(Math.Sin((double)angle));
+				pos.X = pos.X + FW_VELOCITY * runBoost * (float)(Math.Cos((double)angle + Math.PI / 2.0));
+				pos.Y = pos.Y + FW_VELOCITY * runBoost * (float)(Math.Sin((double)angle + Math.PI / 2.0));
 			}
 
 			if (KS.IsKeyDown(Keys.Right)) // RIGHT
@@ -141,6 +99,24 @@ namespace Heist
 				angle -= (float)Math.PI / 32;
 			}
 
+		}
+
+		void Interact()
+		{
+			foreach (InteractableObject InteractableObject in Level.interactableObjects) {
+				RotatedRectangle asdf = GetCollisionRotatedRectangle();
+				if (InteractableObject.upperInteractionArea.Intersects(GetCollisionRotatedRectangle())
+					|| InteractableObject.rightInteractionArea.Intersects(GetCollisionRotatedRectangle())
+					|| InteractableObject.leftInteractionArea.Intersects(GetCollisionRotatedRectangle())
+					|| InteractableObject.bottomInteractionArea.Intersects(GetCollisionRotatedRectangle())) {
+					if (!InteractableObject.GetCollisionRotatedRectangle().Intersects(GetCollisionRotatedRectangle()))
+						InteractableObject.CheckIfPlayerInteracts();
+
+					//if (Keyboard.GetState().IsKeyDown(Keys.Space))
+					//    InteractableObject.PlayerInteracts();
+					//break;
+				}
+			}
 		}
 	}
 }

@@ -106,10 +106,10 @@ namespace Heist
 			player.Update(time);
 
 
-			if (player.pos.X > levelDimensions.X) player.SetValidPos();
-			if (player.pos.Y > levelDimensions.Y) player.SetValidPos();
-			if (player.pos.X < 0) player.SetValidPos();
-			if (player.pos.Y < 0) player.SetValidPos();
+			//if (player.pos.X > levelDimensions.X) player.SetValidPos();
+			//if (player.pos.Y > levelDimensions.Y) player.SetValidPos();
+			//if (player.pos.X < 0) player.SetValidPos();
+			//if (player.pos.Y < 0) player.SetValidPos();
 
 			PhysicsManager.IterateCollisionList(collidableObjects);
 
@@ -119,22 +119,20 @@ namespace Heist
 
 		public void DrawLevel()
 		{
-			         //Placeholder draw for the level outer walls.  
-            Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, 0, 10, (int)levelDimensions.Y))), Color.White);
-            Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle((int)levelDimensions.X, 0, 10, (int)levelDimensions.Y))), Color.White);
-            Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, 0, (int)levelDimensions.X, 10))), Color.White);
-            Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, (int)levelDimensions.Y, (int)levelDimensions.X, 10))), Color.White);
-
+            //Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, 0, 10, (int)levelDimensions.Y))), Color.White);
+            //Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle((int)levelDimensions.X, 0, 10, (int)levelDimensions.Y))), Color.White);
+            //Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, 0, (int)levelDimensions.X, 10))), Color.White);
+            //Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, (int)levelDimensions.Y, (int)levelDimensions.X, 10))), Color.White);
 
             //iterates through every collidableObject as a placeholder, it will iterate through every PhysicalObject, draws them. Checks what they are as to pass the
             //right texture
-            foreach (PhysicalObject PhysicalObject in physicalObjects)
-            {
-            	PhysicalObject.Draw();
-              
-            } // TODO cambiar a PHys Obj
+			foreach (PhysicalObject PhysicalObject in physicalObjects) {
+				PhysicalObject.Draw();
+			} // TODO cambiar a PHys Obj
+			//player.Draw();
 
-			
+			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, -500, 1, 1000))), Color.White);
+			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(-500, 0, 1000, 1))), Color.White);
 		}
 
 
