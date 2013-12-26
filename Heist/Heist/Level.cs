@@ -131,8 +131,13 @@ namespace Heist
 			} // TODO cambiar a PHys Obj
 			//player.Draw();
 
+
+			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(100, -500, 1, 1000))), Color.White);
+			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(200, -500, 1, 1000))), Color.White);
 			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(0, -500, 1, 1000))), Color.White);
 			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(-500, 0, 1000, 1))), Color.White);
+			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(-500, 100, 1000, 1))), Color.White);
+			Game1.spriteBatch.Draw(dot, currentCamera.posInCamera((new Rectangle(-500, 200, 1000, 1))), Color.White);
 		}
 
 

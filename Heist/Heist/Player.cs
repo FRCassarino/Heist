@@ -13,7 +13,7 @@ namespace Heist
 {
 	class Player : LivingObject
 	{
-		public const float FW_VELOCITY = 7; //The basic forward speed
+		public const float FW_VELOCITY = 2; //The basic forward speed
 		public float runBoost = 1.0f;
 		public new Animation sprite;
         Vector2 validPos;
@@ -35,7 +35,7 @@ namespace Heist
 			sprite.Update(time);
         }
 
-		public new void Draw()
+		public override void Draw()
 		{
 			sprite.Draw(pos, angle);
 			DrawBoundingBox();
@@ -104,12 +104,12 @@ namespace Heist
 		void Interact()
 		{
 			foreach (InteractableObject InteractableObject in Level.interactableObjects) {
-				RotatedRectangle asdf = GetCollisionRotatedRectangle();
-				if (InteractableObject.upperInteractionArea.Intersects(GetCollisionRotatedRectangle())
-					|| InteractableObject.rightInteractionArea.Intersects(GetCollisionRotatedRectangle())
-					|| InteractableObject.leftInteractionArea.Intersects(GetCollisionRotatedRectangle())
-					|| InteractableObject.bottomInteractionArea.Intersects(GetCollisionRotatedRectangle())) {
-					if (!InteractableObject.GetCollisionRotatedRectangle().Intersects(GetCollisionRotatedRectangle()))
+				RotatedRectangle asdf = rectangle;
+				if (InteractableObject.upperInteractionArea.Intersects(rectangle)
+					|| InteractableObject.rightInteractionArea.Intersects(rectangle)
+					|| InteractableObject.leftInteractionArea.Intersects(rectangle)
+					|| InteractableObject.bottomInteractionArea.Intersects(rectangle)) {
+					if (!InteractableObject.rectangle.Intersects(rectangle))
 						InteractableObject.CheckIfPlayerInteracts();
 
 					//if (Keyboard.GetState().IsKeyDown(Keys.Space))

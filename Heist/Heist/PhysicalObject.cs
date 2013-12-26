@@ -51,10 +51,10 @@ namespace Heist
 		public void DrawBoundingBox()
 		{
 			//Vector2 off = new Vector2(2f, 2f);
-			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerLeftCorner()) - off, Color.White);
-			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperLeftCorner()) - off, Color.White);
-			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().LowerRightCorner()) - off, Color.White);
-			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(GetCollisionRotatedRectangle().UpperRightCorner()) - off, Color.White);	
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(rectangle.LowerLeftCorner()) - off, Color.White);
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(rectangle.UpperLeftCorner()) - off, Color.White);
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(rectangle.LowerRightCorner()) - off, Color.White);
+			//Game1.spriteBatch.Draw(Level.dot, Level.currentCamera.posInCamera(rectangle.UpperRightCorner()) - off, Color.White);	
 		}
     }
 }

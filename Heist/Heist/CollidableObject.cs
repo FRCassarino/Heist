@@ -14,26 +14,19 @@ namespace Heist
 {
     class CollidableObject : PhysicalObject
     {
-
-        virtual public RotatedRectangle GetCollisionRotatedRectangle()
-        {
-            if (dimensions == Vector2.Zero)
-				return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, texture.Width, texture.Height), angle);
-
-			return new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), angle);
-        }
+		public RotatedRectangle rectangle;
 
         public CollidableObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
             : base(pos, texture, dimensions)
         {
             //Makes sure every collidableObject is added to the list, that is later used to iterate
             //through all the collidableObjects by the collision Manager
+			if (dimensions == Vector2.Zero)
+				dimensions = new Vector2(texture.Width, texture.Height);
+			//rectangle = new RotatedRectangle(new Rectangle((int)pos.X - (int)dimensions.X / 2, (int)pos.Y - (int)dimensions.Y / 2, (int)dimensions.X, (int)dimensions.Y), angle); no
+			rectangle = new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), angle);
             Level.collidableObjects.Add(this);
         }
-
-		public virtual new void Draw()
-		{
-		}
 
         virtual public void CollisionDetected()
         {

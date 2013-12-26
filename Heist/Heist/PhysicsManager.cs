@@ -63,7 +63,7 @@ namespace Heist
             }
             
             
-            if (collidableObject.GetCollisionRotatedRectangle().Intersects(collidableObject2.GetCollisionRotatedRectangle()))
+            if (collidableObject.rectangle.Intersects(collidableObject2.rectangle))
                return true;
             else
                return false;

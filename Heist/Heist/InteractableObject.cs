@@ -28,10 +28,10 @@ namespace Heist
         {
 			Level.interactableObjects.Add(this);
 			//objects you can interact with
-			upperInteractionArea = new RotatedRectangle(new Rectangle((int)GetCollisionRotatedRectangle().UpperLeftCorner().X, (int)GetCollisionRotatedRectangle().UpperLeftCorner().Y - (int)INTERACTION_DISTANCE, (int)GetCollisionRotatedRectangle().Width, (int)INTERACTION_DISTANCE), angle);
-			rightInteractionArea = new RotatedRectangle(new Rectangle((int)GetCollisionRotatedRectangle().UpperRightCorner().X, (int)GetCollisionRotatedRectangle().UpperRightCorner().Y, (int)INTERACTION_DISTANCE, (int)GetCollisionRotatedRectangle().Height), angle);
-			leftInteractionArea = new RotatedRectangle(new Rectangle((int)GetCollisionRotatedRectangle().UpperLeftCorner().X - (int)INTERACTION_DISTANCE, (int)GetCollisionRotatedRectangle().UpperLeftCorner().Y, (int)INTERACTION_DISTANCE, (int)GetCollisionRotatedRectangle().Height), angle);
-			bottomInteractionArea = new RotatedRectangle(new Rectangle((int)GetCollisionRotatedRectangle().LowerLeftCorner().X, (int)GetCollisionRotatedRectangle().LowerLeftCorner().Y, (int)GetCollisionRotatedRectangle().Width, (int)INTERACTION_DISTANCE), angle);
+			upperInteractionArea = new RotatedRectangle(new Rectangle((int)rectangle.UpperLeftCorner().X, (int)rectangle.UpperLeftCorner().Y - (int)INTERACTION_DISTANCE, (int)rectangle.Width, (int)INTERACTION_DISTANCE), angle);
+			rightInteractionArea = new RotatedRectangle(new Rectangle((int)rectangle.UpperRightCorner().X, (int)rectangle.UpperRightCorner().Y, (int)INTERACTION_DISTANCE, (int)rectangle.Height), angle);
+			leftInteractionArea = new RotatedRectangle(new Rectangle((int)rectangle.UpperLeftCorner().X - (int)INTERACTION_DISTANCE, (int)rectangle.UpperLeftCorner().Y, (int)INTERACTION_DISTANCE, (int)rectangle.Height), angle);
+			bottomInteractionArea = new RotatedRectangle(new Rectangle((int)rectangle.LowerLeftCorner().X, (int)rectangle.LowerLeftCorner().Y, (int)rectangle.Width, (int)INTERACTION_DISTANCE), angle);
             //objects you can interact with
         }
 
