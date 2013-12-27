@@ -113,6 +113,8 @@
     <Compile Include="Door.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="InteractableObject.cs" />
+    <Compile Include="IntruderDetector.cs" />
+    <Compile Include="LaserAlarm.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LivingObject.cs" />
     <Compile Include="InertObject.cs" />

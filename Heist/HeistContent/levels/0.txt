@@ -1,4 +1,4 @@
-level 0 880 1000
+level 0 1500 1000
 PhysicalObject textures/FancyFloor 0 0 0 0
 
 CollidableObject textures/Wall 0 95 22 95
@@ -36,9 +36,9 @@ CollidableObject textures/Wall 550 0 110 19
 CollidableObject textures/Wall 660 0 110 19
 CollidableObject textures/Wall 770 0 110 19
 
-CollidableObject textures/Scaffold 22 200 0 0
+
 
 
 
 Door textures/ClosedDoor 440 855 0 0
-Player textures/Player 700 700 130 130
+Player textures/Player 700 700 50 50

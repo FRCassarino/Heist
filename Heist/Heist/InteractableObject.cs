@@ -41,7 +41,7 @@ namespace Heist
            
         }
 
-        public void CheckIfPlayerInteracts()
+        public virtual void CheckIfPlayerInteracts()
         {
             var newState = Keyboard.GetState();
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !oldState.IsKeyDown(Keys.Space))

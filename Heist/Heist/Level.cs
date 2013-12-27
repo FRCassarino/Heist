@@ -20,6 +20,8 @@ namespace Heist
 		public static List<CollidableObject> collidableObjects = new List<CollidableObject>(); //Objects you can collide to
 		public static List<InteractableObject> interactableObjects = new List<InteractableObject>();
         public static List<PhysicalObject> physicalObjects = new List<PhysicalObject>();
+        public static List<LivingObject> livingObjects = new List<LivingObject>();
+
 		public static Camera currentCamera;
 		public Player player;
 		public Vector2 levelDimensions; //the outer walls of the level, for limits and camera purpose
@@ -38,6 +40,8 @@ namespace Heist
 			if (!match.Success)	throw new System.Exception("level file must start with /^level name w h$/"); //makes sure the first line gives the level info
 			this.levelDimensions = new Vector2(Convert.ToInt32(match.Groups[2].Value), Convert.ToInt32(match.Groups[3].Value)); //sets the levelDimensions as read in the file
 			
+            
+
 			string[] rest = lines.Skip(1).ToArray();  //creates an array of every line but the first one
 			foreach (string l in rest) {  //iterates through every line but the first one
 
@@ -94,6 +98,9 @@ namespace Heist
                         break;
 				}
 			}
+
+            //placeholder
+            LaserAlarm laserAlarm = new LaserAlarm(new Vector2(300, 300), testTexture, new Vector2(50, 50), levelDimensions, "right");
 		}
 
 
@@ -103,7 +110,11 @@ namespace Heist
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))	Program.game.Exit();
 
 
-			player.Update(time);
+            foreach (PhysicalObject PhysicalObject in physicalObjects)
+            {
+                PhysicalObject.Update(time);
+
+            } // TODO cambiar a PHys Obj
 
 
 			if (player.pos.X > levelDimensions.X) player.SetValidPos();
