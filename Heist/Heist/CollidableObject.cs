@@ -23,10 +23,15 @@ namespace Heist
             //through all the collidableObjects by the collision Manager
 			if (dimensions == Vector2.Zero)
 				dimensions = new Vector2(texture.Width, texture.Height);
-			//rectangle = new RotatedRectangle(new Rectangle((int)pos.X - (int)dimensions.X / 2, (int)pos.Y - (int)dimensions.Y / 2, (int)dimensions.X, (int)dimensions.Y), angle); no
 			rectangle = new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), angle);
+			//rectangle = new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), angle);
             Level.collidableObjects.Add(this);
         }
+
+		virtual public void Update()
+		{
+			rectangle = new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)dimensions.X, (int)dimensions.Y), angle);
+		}
 
         virtual public void CollisionDetected()
         {

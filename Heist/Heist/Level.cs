@@ -103,7 +103,10 @@ namespace Heist
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))	Program.game.Exit();
 
 
-			player.Update(time);
+			//player.Update(time);
+			foreach (PhysicalObject po in physicalObjects) {
+				po.Update(time);
+			} // fuck you fede. doesn't matter, its all gonna turn into bits.
 
 
 			//if (player.pos.X > levelDimensions.X) player.SetValidPos();

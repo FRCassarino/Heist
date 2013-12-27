@@ -39,7 +39,6 @@ namespace Heist
 
 		public virtual void Update(GameTime time)
         {
-			
         }
 
         public virtual void Draw()

@@ -26,13 +26,14 @@ namespace Heist
 		}
 
         public override void Update(GameTime time) 
-        {
+        {			
 			Move();
 			//Interact();
-
+			base.Update();
 			// Better to put these two lines last, after any other code has changed the player's position.
 			Level.currentCamera.position = pos;
 			sprite.Update(time);
+
         }
 
 		public override void Draw()

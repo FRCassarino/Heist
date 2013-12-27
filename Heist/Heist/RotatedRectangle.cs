@@ -14,7 +14,7 @@ namespace Heist
         
         public RotatedRectangle(Rectangle theRectangle, float theInitialRotation)
         {
-            CollisionRectangle = theRectangle;
+			CollisionRectangle = new Rectangle(theRectangle.X - theRectangle.Width / 2, theRectangle.Y - theRectangle.Height / 2, theRectangle.Width, theRectangle.Height);
             Rotation = theInitialRotation;
         
             //Calculate the Rectangles origin. We assume the center of the Rectangle will
