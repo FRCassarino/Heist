@@ -8,4 +8,5 @@ Heist/HeistContent/bin
 Heist/Heist/obj
 Heist/HeistContent/obj
 *.cachefile
+*.fede
 *.ccgame
