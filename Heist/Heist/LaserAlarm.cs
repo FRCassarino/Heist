@@ -27,11 +27,11 @@ namespace Heist
                 //acordarse de excluir al player y a él mismo, qe solo sean paredes y eso, capaz cambiar a inertobjects
                 foreach (CollidableObject CollidableObject in Level.collidableObjects)
                 {
-                    if (new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y /*acordarse de hacerlo del medio o algo así*/, (int)levelDimensions.X - (int)pos.X, 5), 0).Intersects(CollidableObject.GetCollisionRotatedRectangle()))
+					if (new RotatedRectangle(new Rectangle((int)pos.X, (int)pos.Y, (int)levelDimensions.X - (int)pos.X, 5), 0).Intersects(CollidableObject.rectangle))
                     {
                         if (!(CollidableObject is Player) && !(CollidableObject is LaserAlarm))
                         {
-                        collisionXPositions.Add((int)CollidableObject.GetCollisionRotatedRectangle().UpperLeftCorner().X);
+                        collisionXPositions.Add((int)CollidableObject.rectangle.UpperLeftCorner().X);
                         }
                     }
                 }
@@ -50,7 +50,7 @@ namespace Heist
         {
               foreach (LivingObject LivingObject in Level.livingObjects)
               {
-                  if (detectionZone.Intersects(LivingObject.GetCollisionRotatedRectangle()) /*y chequear si tiene keypass válido*/)
+                  if (detectionZone.Intersects(LivingObject.rectangle) /*y chequear si tiene keypass válido*/)
                   {
                       return true;             
          

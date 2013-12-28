@@ -13,7 +13,7 @@ namespace Heist
 {
 	class Player : LivingObject
 	{
-		public const float FW_VELOCITY = 2; //The basic forward speed
+		public const float FW_VELOCITY = 10; //The basic forward speed
 		public float runBoost = 1.0f;
 		public new Animation sprite;
         Vector2 validPos;
