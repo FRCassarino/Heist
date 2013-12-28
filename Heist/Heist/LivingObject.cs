@@ -18,6 +18,7 @@ namespace Heist
         public LivingObject(Vector2 pos, Texture2D texture, Vector2 dimensions)
             : base(pos, texture, dimensions)
         {
+            Level.livingObjects.Add(this);
             //will be used at least to make a list of all the living collidable objects and iterate through them for various purposes
         }
 

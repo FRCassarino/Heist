@@ -43,6 +43,11 @@ namespace Heist
             //Left blank because it should only be used by inherited classes
         }
 
-        
-    }
+
+
+		protected static object GetCollisionRotatedRectangle()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

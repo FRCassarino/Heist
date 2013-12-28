@@ -20,6 +20,8 @@ namespace Heist
 		public static List<CollidableObject> collidableObjects = new List<CollidableObject>(); //Objects you can collide to
 		public static List<InteractableObject> interactableObjects = new List<InteractableObject>();
         public static List<PhysicalObject> physicalObjects = new List<PhysicalObject>();
+        public static List<LivingObject> livingObjects = new List<LivingObject>();
+
 		public static Camera currentCamera;
 		public Player player;
 		public Vector2 levelDimensions; //the outer walls of the level, for limits and camera purpose
