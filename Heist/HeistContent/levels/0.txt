@@ -1,5 +1,5 @@
 level 0 880 1000
-#PhysicalObject textures/FancyFloor 100 100 100 100
+PhysicalObject textures/FancyFloor 100 100 100 100
 CollidableObject textures/Wall 200 0 200 200
 Player textures/Player 0 0 100 100
 # CollidableObject textures/Wall 0 190 22 95
